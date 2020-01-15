@@ -15,6 +15,7 @@ public class DateReunion {
 	@Id
 	@GeneratedValue
 	long id;
+	
 	@Temporal(TemporalType.DATE)
 	Date date;
 	

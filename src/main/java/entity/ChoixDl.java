@@ -3,10 +3,13 @@ package entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class ChoixDl extends Choix {
 
+	@Temporal(TemporalType.DATE)
 	private Date datechoisie;
 	private String lieuChoisie;
 	

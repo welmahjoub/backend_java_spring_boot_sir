@@ -5,7 +5,6 @@ import javax.persistence.EntityTransaction;
 
 import Repository.SondageRepository;
 import Repository.UserRepository;
-import entity.Utilisateur;
 
 public class JpaTest {
 
