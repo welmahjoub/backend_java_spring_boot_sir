@@ -10,17 +10,18 @@ import javax.persistence.OneToMany;
 @Entity
 public class Utilisateur {
 
+	@Id
+	@GeneratedValue
+	private long id;
+	
 	private String nom, prenom, mail;
 	
-	@OneToMany(targetEntity=Sondage.class, mappedBy = "user")
+	@OneToMany(mappedBy = "user")
 	private List<Sondage> sondages;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Choix> choix;
 	
-	@Id
-	@GeneratedValue
-	private long id;
 	
 	public long getId() {
 		return id;
