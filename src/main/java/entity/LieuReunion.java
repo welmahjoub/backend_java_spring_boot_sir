@@ -1,22 +1,18 @@
 package entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-public class DateReunion {
+public class LieuReunion {
 
 	@Id
 	@GeneratedValue
 	long id;
-	@Temporal(TemporalType.DATE)
-	Date date;
+	
+	private String lieu;
 	
 	@ManyToOne
 	private Sondage sondage;
@@ -29,13 +25,7 @@ public class DateReunion {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
-	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 	public Sondage getSondage() {
 		return sondage;
@@ -43,6 +33,14 @@ public class DateReunion {
 
 	public void setSondage(Sondage sondage) {
 		this.sondage = sondage;
+	}
+
+	public String getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
 	}
 	
 	

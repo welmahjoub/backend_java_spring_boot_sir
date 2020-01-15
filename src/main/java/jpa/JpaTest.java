@@ -3,9 +3,6 @@ package jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import Repository.ChoixRepository;
-import Repository.DateReunionRepository;
-import Repository.ReunionRepository;
 import Repository.SondageRepository;
 import Repository.UserRepository;
 import entity.Utilisateur;
@@ -24,12 +21,8 @@ public class JpaTest {
 
 		try {
 
-			UserRepository.remplirTableUser();
-			SondageRepository.remplirTableSondage();
-			DateReunionRepository.remplirTable();
-			ReunionRepository.remplirTable();
-			ChoixRepository.remplirTable();
- 
+        SondageRepository.remplirTableSondage();
+        UserRepository.remplirTableUser();
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -40,7 +40,7 @@ public class ChoixRepository {
 			choix.setSondage(s);
 			choix.setUser(user2);
 			choix.setAllergies("gluten");
-			choix.setDatechoisie(new Date());
+			//choix.setDatechoisie(new Date());
 			manager.persist(choix);
 			
 		
