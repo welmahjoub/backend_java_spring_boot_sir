@@ -12,8 +12,7 @@ public class Reunion {
 	@GeneratedValue
 	long id;
 	
-	@OneToOne
-	private DateReunion datereunion;
+	private String intitule, resume, code, lienPad;
 	
 	@OneToOne
 	private Sondage sondage;
@@ -26,7 +25,6 @@ public class Reunion {
 		this.sondage = sondage;
 	}
 
-	private String intitule, resume, code, lienPad;
 	
 	public String getLienPad() {
 		return lienPad;
@@ -36,13 +34,7 @@ public class Reunion {
 		this.lienPad = lienPad;
 	}
 
-	public DateReunion getDatereunion() {
-		return datereunion;
-	}
 
-	public void setDatereunion(DateReunion datereunion) {
-		this.datereunion = datereunion;
-	}
 
 	public long getId() {
 		return id;

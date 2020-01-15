@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class SondageDate extends Sondage {
@@ -11,4 +12,6 @@ public class SondageDate extends Sondage {
 	@OneToMany(mappedBy = "sondage")
 	private List<DateReunion> dateProposees;
 
+	@OneToOne
+	private DateReunion datereunion;
 }

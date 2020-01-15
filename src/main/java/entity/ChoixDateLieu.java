@@ -7,7 +7,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class ChoixDl extends Choix {
+public class ChoixDateLieu extends Choix {
 
 	@Temporal(TemporalType.DATE)
 	private Date datechoisie;

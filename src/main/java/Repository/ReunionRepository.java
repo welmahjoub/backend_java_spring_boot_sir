@@ -45,7 +45,7 @@ public class ReunionRepository {
 		reun.setResume("blabla");
 		reun.setIntitule("balalala");
 		reun.setLienPad("www.framepad.org");
-		reun.setDatereunion(dateReunion);
+		
 		
 		manager.persist(reun);
 		
