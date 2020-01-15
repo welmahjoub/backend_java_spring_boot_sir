@@ -11,6 +11,7 @@ public class ChoixDateLieu extends Choix {
 
 	@Temporal(TemporalType.DATE)
 	private Date datechoisie;
+	
 	private String lieuChoisie;
 	
 	public String getLieuChoisie() {

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import entity.DateReunion;
 import entity.Reunion;
 import entity.Sondage;
 import entity.Utilisateur;
@@ -35,10 +34,7 @@ public class ReunionRepository {
 		s.setLien("lien");
 		manager.persist(s);
 		
-		DateReunion dateReunion = new DateReunion();
-		dateReunion.setSondage(s);
-		dateReunion.setDate(new Date());
-		manager.persist(dateReunion);
+		
 		
 		Reunion reun = new Reunion();
 		reun.setCode("proporeunion123456");
