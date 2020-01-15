@@ -11,9 +11,9 @@ import javax.persistence.TemporalType;
 public class SondageDate extends Sondage {
 
 	
-	@Temporal(TemporalType.DATE)
 	private List<Date> dateProposees;
 
+	@Temporal(TemporalType.DATE)
 	private Date datereunion;
 	
 
