@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -12,9 +13,11 @@ public class SondageDateLieu extends Sondage {
 
 
 
-	private List<Date> dateProposees;
+	@OneToMany(mappedBy = "sondage")
+	private List<DateReunion> dateProposees;
 
-	private List<String> lieuProposees;
+	@OneToMany(mappedBy = "sondage")
+	private List<LieuReunion> lieuProposees;
 	
 	private String lieuReunion;
 	
@@ -22,11 +25,13 @@ public class SondageDateLieu extends Sondage {
 	private Date datereunion;
 
 
-	public List<Date> getDateProposees() {
+	
+
+	public List<DateReunion> getDateProposees() {
 		return dateProposees;
 	}
 
-	public void setDateProposees(List<Date> dateProposees) {
+	public void setDateProposees(List<DateReunion> dateProposees) {
 		this.dateProposees = dateProposees;
 	}
 
@@ -38,11 +43,13 @@ public class SondageDateLieu extends Sondage {
 		this.datereunion = datereunion;
 	}
 
-	public List<String> getLieuProposees() {
+
+
+	public List<LieuReunion> getLieuProposees() {
 		return lieuProposees;
 	}
 
-	public void setLieuProposees(List<String> lieuProposees) {
+	public void setLieuProposees(List<LieuReunion> lieuProposees) {
 		this.lieuProposees = lieuProposees;
 	}
 
