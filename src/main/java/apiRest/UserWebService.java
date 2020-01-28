@@ -1,8 +1,10 @@
-package rest;
+package apiRest;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -19,15 +21,17 @@ public class UserWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<User> getUsers() {
 		
-		//UserRepository.remplirTableUser();
-		
-		/*List<Utilisateur>  liste =UserRepository.getListeUser();
-		List<String> names=new ArrayList<String>();
-		for (Utilisateur e : liste) {
-			names.add(e.getNom());
-		}*/
-		
 		return UserRepository.getListeUser();
 	}
+	
+	/*@POST
+	@Path("/addUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String addUser(User u) {
+		UserRepository.addUser(u);
+		
+		return "ok ajouter effectuer";
+	}*/
 
 }

@@ -16,6 +16,7 @@ public class DateReunion {
 	@GeneratedValue
 	private long id;
 	
+	
 	@ManyToOne
 	private Sondage sondage;
 	
