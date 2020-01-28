@@ -1,6 +1,5 @@
 package rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -18,15 +17,17 @@ public class UserWebService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<String> getUsers() {
+	public List<Utilisateur> getUsers() {
 		
-		List<Utilisateur>  liste =UserRepository.getListeUser();
+		UserRepository.remplirTableUser();
+		
+		/*List<Utilisateur>  liste =UserRepository.getListeUser();
 		List<String> names=new ArrayList<String>();
 		for (Utilisateur e : liste) {
 			names.add(e.getNom());
-		}
+		}*/
 		
-		return names;
+		return UserRepository.getListeUser();
 	}
 
 }

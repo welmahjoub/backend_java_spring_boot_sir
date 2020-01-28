@@ -3,7 +3,6 @@ package jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import Repository.SondageRepository;
 import Repository.UserRepository;
 
 public class JpaTest {
@@ -20,7 +19,7 @@ public class JpaTest {
 
 		try {
 
-        SondageRepository.remplirTableSondage();
+       // SondageRepository.remplirTableSondage();
         UserRepository.remplirTableUser();
 
 		} catch (Exception e) {
