@@ -19,7 +19,7 @@ public class UserWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Utilisateur> getUsers() {
 		
-		UserRepository.remplirTableUser();
+		//UserRepository.remplirTableUser();
 		
 		/*List<Utilisateur>  liste =UserRepository.getListeUser();
 		List<String> names=new ArrayList<String>();

@@ -1,17 +1,15 @@
-package entity;
-
-import java.util.Date;
+package Entity2;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 @Entity
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Choix {
 	
 	@Id
@@ -19,9 +17,6 @@ public class Choix {
 	long id;
 	
 	private String preferenceAliments, allergies ;
-	
-	@Temporal(TemporalType.DATE)
-	private Date datechoisie;
 	
 	@ManyToOne
 	private Utilisateur user;

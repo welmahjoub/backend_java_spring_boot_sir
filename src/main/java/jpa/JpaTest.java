@@ -19,8 +19,10 @@ public class JpaTest {
 
 		try {
 
-       // SondageRepository.remplirTableSondage();
         UserRepository.remplirTableUser();
+        
+        
+        
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,7 +32,6 @@ public class JpaTest {
 
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
-		//		factory.close();
 	}
 
 

@@ -1,4 +1,4 @@
-package entity;
+package Entity2;
 
 import java.util.Date;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -13,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Sondage {
 	
 	@Id
@@ -21,24 +24,16 @@ public class Sondage {
 	
 	private String lien; 
 	
-	@OneToMany(mappedBy = "sondage")
-	private List<DateReunion> dateProposees;
+	@Temporal(TemporalType.DATE)
+	private Date dateCreation;
 	
 	@OneToMany(mappedBy = "sondage")
 	private List<Choix> choix;
 	
-	@Temporal(TemporalType.DATE)
-	private Date datereunion;
-	
-	@Temporal(TemporalType.DATE)
-	private Date dateCreation;
-	
-	
-	
-	@ManyToOne()
+	@ManyToOne(targetEntity=Utilisateur.class)
 	private Utilisateur user;
 	
-	@OneToOne(mappedBy = "sondage")
+	@OneToOne
 	private Reunion reunion;
 	
 	
