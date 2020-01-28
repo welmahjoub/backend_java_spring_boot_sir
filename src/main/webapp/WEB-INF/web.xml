@@ -9,7 +9,7 @@
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
 			<param-value>
-				rest
+				apiRest
 			 </param-value>
 		</init-param>
 				<init-param>

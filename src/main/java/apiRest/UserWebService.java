@@ -24,14 +24,16 @@ public class UserWebService {
 		return UserRepository.getListeUser();
 	}
 	
-	/*@POST
+	@POST
 	@Path("/addUser")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(User u) {
+		
+		System.err.println(u.getNom());
 		UserRepository.addUser(u);
 		
 		return "ok ajouter effectuer";
-	}*/
+	}
 
 }

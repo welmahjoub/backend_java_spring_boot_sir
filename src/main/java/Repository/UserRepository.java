@@ -50,6 +50,7 @@ public class UserRepository {
 	public static void addUser(User u)
 	{
 		manager.persist(u);	
+		
 	}
 	
 }
