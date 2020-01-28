@@ -24,7 +24,7 @@ public class Choix {
 	private Date datechoisie;
 	
 	@ManyToOne
-	private Utilisateur user;
+	private User user;
 	
 	@ManyToOne
 	private Sondage sondage;
@@ -42,10 +42,10 @@ public class Choix {
 	public void setAllergies(String allergies) {
 		this.allergies = allergies;
 	}
-	public Utilisateur getUser() {
+	public User getUser() {
 		return user;
 	}
-	public void setUser(Utilisateur user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	public Sondage getSondage() {

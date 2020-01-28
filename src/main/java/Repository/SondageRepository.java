@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import entity.Sondage;
-import entity.Utilisateur;
+import entity.User;
 import jpa.EntityManagerHelper;
 
 public class SondageRepository {
@@ -21,7 +21,7 @@ public class SondageRepository {
 		
 		if (number == 0) {	
 		
-		Utilisateur user2=new Utilisateur();
+		User user2=new User();
 		user2.setNom("user2");
 		user2.setPrenom("user2");
 		user2.setMail("user2@gmail.com");
@@ -43,4 +43,10 @@ public class SondageRepository {
 		
 		return q.getResultList();
 	}
+	
+	public static void addSondage(Sondage s)
+	{
+		manager.persist(s);	
+	}
+	
 }

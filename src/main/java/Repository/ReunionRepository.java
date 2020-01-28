@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import entity.Reunion;
 import entity.Sondage;
-import entity.Utilisateur;
+import entity.User;
 import jpa.EntityManagerHelper;
 
 public class ReunionRepository {
@@ -22,7 +22,7 @@ public class ReunionRepository {
 		
 		if (number == 0) {	
 		
-		Utilisateur user2=new Utilisateur();
+		User user2=new User();
 		user2.setNom("user2");
 		user2.setPrenom("user2");
 		user2.setMail("user2@gmail.com");

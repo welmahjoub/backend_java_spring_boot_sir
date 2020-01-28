@@ -19,7 +19,9 @@ public class Sondage {
 	@GeneratedValue
 	private long id;
 	
-	private String lien; 
+	private String lien;
+	
+	private boolean clos;
 	
 	@OneToMany(mappedBy = "sondage")
 	private List<DateReunion> dateProposees;
@@ -36,7 +38,7 @@ public class Sondage {
 	
 	
 	@ManyToOne()
-	private Utilisateur user;
+	private User user;
 	
 	@OneToOne(mappedBy = "sondage")
 	private Reunion reunion;
@@ -74,11 +76,11 @@ public class Sondage {
 		this.dateCreation = dateCreation;
 	}
 	
-	public Utilisateur getUser() {
+	public User getUser() {
 		return user;
 	}
 	
-	public void setUser(Utilisateur user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	

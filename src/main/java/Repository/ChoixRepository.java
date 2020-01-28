@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import entity.Choix;
 import entity.Sondage;
-import entity.Utilisateur;
+import entity.User;
 import jpa.EntityManagerHelper;
 
 public class ChoixRepository {
@@ -23,7 +23,7 @@ public class ChoixRepository {
 		if (number == 0) {	
 		
 
-			Utilisateur user2=new Utilisateur();
+			User user2=new User();
 			user2.setNom("user2");
 			user2.setPrenom("user2");
 			user2.setMail("user2@gmail.com");
@@ -48,7 +48,7 @@ public class ChoixRepository {
 	}
 	
 
-	public static List<Utilisateur> getListeUser()
+	public static List<User> getListeUser()
 	{
 		
 		Query q=manager.createQuery("select a from Utilisateur");

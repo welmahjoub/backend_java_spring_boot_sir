@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import entity.Utilisateur;
+import entity.User;
 import jpa.EntityManagerHelper;
 
 public class UserRepository {
@@ -15,21 +15,21 @@ public class UserRepository {
 	public static void remplirTableUser()
 	{
 		
-		int number = manager.createQuery("Select a From Utilisateur a", Utilisateur.class).getResultList().size();
+		int number = manager.createQuery("Select a From User a", User.class).getResultList().size();
 		System.err.println("by");
 		
 		if (number == 0) {	
 			
 			System.err.println("hi");
 		
-		Utilisateur user1=new Utilisateur();
+		User user1=new User();
 		user1.setNom("Mahjoub");
 		user1.setPrenom("Abdel");
 		user1.setMail("Abdel@gmail.com");
 		manager.persist(user1);
 		
 		
-		Utilisateur user2=new Utilisateur();
+		User user2=new User();
 		user2.setNom("yaya");
 		user2.setPrenom("simp");
 		user2.setMail("yaya@gmail.com");
@@ -39,12 +39,17 @@ public class UserRepository {
 	}
 	
 
-	public static List<Utilisateur> getListeUser()
+	public static List<User> getListeUser()
 	{
 		
-		Query q=manager.createQuery("select a from Utilisateur a");
+		Query q=manager.createQuery("select a from User a");
 		
 		return q.getResultList();
+	}
+	
+	public static void addUser(User u)
+	{
+		manager.persist(u);	
 	}
 	
 }

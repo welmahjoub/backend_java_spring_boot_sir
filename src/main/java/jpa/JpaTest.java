@@ -1,9 +1,12 @@
 package jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import Repository.UserRepository;
+import entity.User;
 
 public class JpaTest {
 
@@ -21,8 +24,11 @@ public class JpaTest {
 
         UserRepository.remplirTableUser();
         
+        List<User> users = UserRepository.getListeUser();
         
-        
+        for (User utilisateur : users) {
+			System.out.println("1" + utilisateur.getNom() +" "+utilisateur.getPrenom() );
+		}
 
 		} catch (Exception e) {
 			e.printStackTrace();
