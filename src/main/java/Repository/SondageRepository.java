@@ -61,4 +61,10 @@ public class SondageRepository {
 		
 	}
 	
+	public static Sondage findById(String id)
+	{
+		return manager.find(Sondage.class, Long.valueOf(id));
+		
+	}
+	
 }
