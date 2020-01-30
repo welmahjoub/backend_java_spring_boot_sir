@@ -27,7 +27,7 @@ public class Sondage {
 	@ManyToOne()
 	private User user;
 	
-	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Reunion reunion;
 	
 	@OneToMany(mappedBy = "sondage",cascade = CascadeType.PERSIST)

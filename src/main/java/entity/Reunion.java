@@ -14,7 +14,7 @@ public class Reunion {
 	
 	private String intitule, resume, code, lienPad;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "reunion")
 	private Sondage sondage;
 	
 	
