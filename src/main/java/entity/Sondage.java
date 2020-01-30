@@ -13,6 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 public class Sondage {
 	
@@ -25,15 +28,19 @@ public class Sondage {
 	private boolean clos;
 	
 	@ManyToOne()
+	@JsonBackReference
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "sondage")
+	@JsonManagedReference
 	private Reunion reunion;
 	
 	@OneToMany(mappedBy = "sondage",cascade = CascadeType.PERSIST)
+	@JsonManagedReference
 	private List<DateReunion> dateProposees;
 	
 	@OneToMany(mappedBy = "sondage")
+	@JsonManagedReference
 	private List<Choix> choix;
 	
 	@Temporal(TemporalType.DATE)

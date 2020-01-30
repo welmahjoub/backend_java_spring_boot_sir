@@ -1,7 +1,5 @@
 package apiRest;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import Repository.ReunionRepository;
 import Repository.SondageRepository;
 import Repository.UserRepository;
 import Utils.Util;
@@ -48,9 +47,10 @@ public class SondageWebService {
 		user=UserRepository.findById(data.getIdUser());
 		proposition=new ArrayList<DateReunion>();
 		
+		s=new Sondage(proposition, user, r);
+		
 		r=new Reunion(data.getIntitule(), data.getResume(), s) ;
 		
-		s=new Sondage(proposition, user, r);
 		
 		for (String date : data.getDates()) {
 			 
@@ -60,6 +60,7 @@ public class SondageWebService {
 		}
 
 		SondageRepository.addSondage(s);
+		ReunionRepository.addReunion(r);
 		
 		return "ok ajouter  effectuer";
 	}

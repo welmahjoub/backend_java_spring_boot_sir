@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 @Entity
 public class DateReunion {
 
@@ -18,6 +20,7 @@ public class DateReunion {
 	
 	
 	@ManyToOne
+	@JsonBackReference
 	private Sondage sondage;
 	
 	@Temporal(TemporalType.DATE)

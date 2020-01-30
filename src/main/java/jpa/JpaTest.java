@@ -28,19 +28,19 @@ public class JpaTest {
 
         UserRepository.remplirTableUser();
         
-        List<User> users = UserRepository.getListeUser();
+       /* List<User> users = UserRepository.getListeUser();
         
         for (User utilisateur : users) {
 			System.out.println("1" + utilisateur.getNom() +" "+utilisateur.getPrenom() );
-		}
+		}*/
         
-        SondageRepository.remplirTableSondage();
+       /* SondageRepository.remplirTableSondage();
         
         List<Sondage> sonds = SondageRepository.getListeSondage();
         
         for (Sondage s : sonds) {
 			System.out.println("Sondage : "+s.getUser().getNom() );
-		}
+		}*/
         
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 public class User {
 
@@ -17,6 +19,7 @@ public class User {
 	private String nom, prenom, mail;
 	
 	@OneToMany(mappedBy = "user")
+	 @JsonManagedReference
 	private List<Sondage> sondages;
 	
 	@OneToMany(mappedBy = "user")

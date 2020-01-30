@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 @Entity
 public class Reunion {
 
@@ -14,9 +16,9 @@ public class Reunion {
 	
 	private String intitule, resume, code, lienPad;
 	
-	@OneToOne(mappedBy = "reunion")
+	@OneToOne()
+	@JsonBackReference
 	private Sondage sondage;
-	
 	
 	
 	public Reunion(String intitule, String resume, Sondage sondage) {

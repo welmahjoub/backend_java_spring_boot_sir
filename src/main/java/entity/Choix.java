@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 
 @Entity
 
@@ -24,9 +26,11 @@ public class Choix {
 	private Date datechoisie;
 	
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Sondage sondage;
 	
 	public String getPreferenceAliments() {
