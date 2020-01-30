@@ -33,7 +33,7 @@ public class SondageWebService {
 	public String addSondage(Sondage  s) {
 		
 		SondageRepository.addSondage(s);
-		return "ok ajouter effectuer";
+		return "ok ajouter  effectuer";
 	}
 
 }
