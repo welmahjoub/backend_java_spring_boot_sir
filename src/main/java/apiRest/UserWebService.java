@@ -30,7 +30,7 @@ public class UserWebService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(User u) {
 		
-		System.err.println(u.getNom());
+		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
 		UserRepository.addUser(u);
 		
 		return "ok ajouter effectuer";

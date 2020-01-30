@@ -49,7 +49,10 @@ public class UserRepository {
 	
 	public static void addUser(User u)
 	{
-		manager.persist(u);	
+		manager.getTransaction().begin();
+        manager.persist(u);
+        manager.getTransaction().commit();
+        manager.close();
 		
 	}
 	
