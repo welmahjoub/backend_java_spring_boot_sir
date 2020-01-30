@@ -25,7 +25,7 @@ public class UserWebService {
 	}
 	
 	@POST
-	@Path("/addUser")
+	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(User u) {

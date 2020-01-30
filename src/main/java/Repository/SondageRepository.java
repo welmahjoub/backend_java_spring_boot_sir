@@ -14,27 +14,7 @@ public class SondageRepository {
 
 	static EntityManager manager = EntityManagerHelper.getEntityManager();
 	
-	public static void remplirTableSondage()
-	{
-		
-		int number = manager.createQuery("Select a From Sondage a", Sondage.class).getResultList().size();
-		
-		if (number == 0) {	
-		
-		User user2=new User();
-		user2.setNom("user2");
-		user2.setPrenom("user2");
-		user2.setMail("user2@gmail.com");
-		manager.persist(user2);
-		
-		Sondage s=new Sondage();
-		s.setUser(user2);
-		s.setDateCreation(new Date());
-		s.setLien("lien");
-		manager.persist(s);
-		
-		}
-	}
+	
 	
 	public static List<Sondage> getListeSondage()
 	{
@@ -49,7 +29,7 @@ public class SondageRepository {
 		manager.getTransaction().begin();
 		manager.persist(s);	
 		manager.getTransaction().commit();
-		//manager.close();
+		
 	}
 	
 }

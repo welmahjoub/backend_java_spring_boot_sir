@@ -17,6 +17,15 @@ public class Reunion {
 	@OneToOne
 	private Sondage sondage;
 	
+	
+	
+	public Reunion(String intitule, String resume, Sondage sondage) {
+		super();
+		this.intitule = intitule;
+		this.resume = resume;
+		this.sondage = sondage;
+	}
+
 	public Sondage getSondage() {
 		return sondage;
 	}

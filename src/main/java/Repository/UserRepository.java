@@ -52,7 +52,12 @@ public class UserRepository {
 		manager.getTransaction().begin();
         manager.persist(u);
         manager.getTransaction().commit();
-        manager.close();
+		
+	}
+	
+	public static User findById(String id)
+	{
+		return manager.find(User.class, Long.valueOf(id));
 		
 	}
 	

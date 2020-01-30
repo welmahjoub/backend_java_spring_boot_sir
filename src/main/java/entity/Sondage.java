@@ -3,6 +3,7 @@ package entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,25 +24,61 @@ public class Sondage {
 	
 	private boolean clos;
 	
-	@OneToMany(mappedBy = "sondage")
+	@ManyToOne()
+	private User user;
+	
+	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
+	private Reunion reunion;
+	
+	@OneToMany(mappedBy = "sondage",cascade = CascadeType.PERSIST)
 	private List<DateReunion> dateProposees;
 	
 	@OneToMany(mappedBy = "sondage")
 	private List<Choix> choix;
 	
 	@Temporal(TemporalType.DATE)
-	private Date datereunion;
+	private Date dateReunion;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	
 	
+	public Sondage(List<DateReunion> dateProposees, User user, Reunion reunion) {
+		super();
+		this.dateProposees = dateProposees;
+		this.user = user;
+		this.reunion = reunion;
+		this.clos=false;
+		this.dateCreation=new Date();
+		this.dateReunion=null;
+		
+	}
+
+	public boolean isClos() {
+		return clos;
+	}
+
+	public void setClos(boolean clos) {
+		this.clos = clos;
+	}
+
+	public List<DateReunion> getDateProposees() {
+		return dateProposees;
+	}
+
+	public void setDateProposees(List<DateReunion> dateProposees) {
+		this.dateProposees = dateProposees;
+	}
+
+	public Date getDatereunion() {
+		return dateReunion;
+	}
+
+	public void setDatereunion(Date datereunion) {
+		this.dateReunion = datereunion;
+	}
+
 	
-	@ManyToOne()
-	private User user;
-	
-	@OneToOne(mappedBy = "sondage")
-	private Reunion reunion;
 	
 	
 	public List<Choix> getChoix() {
