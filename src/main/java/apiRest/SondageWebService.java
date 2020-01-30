@@ -1,5 +1,9 @@
 package apiRest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -11,6 +15,10 @@ import javax.ws.rs.core.MediaType;
 
 import Repository.SondageRepository;
 import Repository.UserRepository;
+import Utils.Util;
+import dto.SondageDto;
+import entity.DateReunion;
+import entity.Reunion;
 import entity.Sondage;
 import entity.User;
 
@@ -30,9 +38,29 @@ public class SondageWebService {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String addSondage(Sondage  s) {
+	public String addSondage(SondageDto  data) {
 		
+		User user;
+		Sondage s = null;
+		Reunion r=null;
+		List<DateReunion> proposition;
+		
+		user=UserRepository.findById(data.getIdUser());
+		proposition=new ArrayList<DateReunion>();
+		
+		r=new Reunion(data.getIntitule(), data.getResume(), s) ;
+		
+		s=new Sondage(proposition, user, r);
+		
+		for (String date : data.getDates()) {
+			 
+			Date d=Util.convertirDate(date);
+			DateReunion dr=new DateReunion(s, d);
+			proposition.add(dr);
+		}
+
 		SondageRepository.addSondage(s);
+		
 		return "ok ajouter  effectuer";
 	}
 

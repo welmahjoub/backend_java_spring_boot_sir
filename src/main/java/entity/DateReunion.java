@@ -23,6 +23,12 @@ public class DateReunion {
 	@Temporal(TemporalType.DATE)
 	Date date;
 
+	public DateReunion(Sondage sondage, Date date) {
+		super();
+		this.sondage = sondage;
+		this.date = date;
+	}
+
 	public long getId() {
 		return id;
 	}

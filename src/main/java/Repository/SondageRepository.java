@@ -44,23 +44,13 @@ public class SondageRepository {
 		}
 	}
 	
+	
 	public static List<Sondage> getListeSondage()
 	{
 		
 		Query q=manager.createQuery("select a from Sondage");
 		
-		//return q.getResultList();
-		
-		
 		return q.getResultList();
-		
-		/*
-		List<Sondage> 
-		for (Sondage sond : sondages) {
-			System.out.println(sond.getUser().getNom());
-		}
-		
-		return sondages;*/
 	}
 	
 	public static void addSondage(Sondage s)
@@ -68,7 +58,7 @@ public class SondageRepository {
 		manager.getTransaction().begin();
 		manager.persist(s);	
 		manager.getTransaction().commit();
-		//manager.close();
+		
 	}
 	
 }
