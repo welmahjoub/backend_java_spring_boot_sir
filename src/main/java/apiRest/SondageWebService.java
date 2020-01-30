@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -63,6 +64,14 @@ public class SondageWebService {
 		ReunionRepository.addReunion(r);
 		
 		return "ok ajouter  effectuer";
+	}
+	
+	@GET
+	@Path("/get/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Sondage getSondage(@PathParam ("id") String idsondage) {
+		
+		return SondageRepository.findById(idsondage);
 	}
 
 }
