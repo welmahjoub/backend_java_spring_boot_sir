@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import entity.Reunion;
 import entity.Sondage;
 import entity.User;
 import jpa.EntityManagerHelper;
@@ -33,6 +34,13 @@ public class SondageRepository {
 		s.setLien("lien");
 		manager.persist(s);
 		
+		Reunion r=  new Reunion();
+		r.setSondage(s);
+		r.setIntitule("reunion import");
+		r.setLienPad("www.reg.com");
+		r.setResume("blalalaall");
+		manager.persist(r);
+		
 		}
 	}
 	
@@ -41,7 +49,18 @@ public class SondageRepository {
 		
 		Query q=manager.createQuery("select a from Sondage");
 		
+		//return q.getResultList();
+		
+		
 		return q.getResultList();
+		
+		/*
+		List<Sondage> 
+		for (Sondage sond : sondages) {
+			System.out.println(sond.getUser().getNom());
+		}
+		
+		return sondages;*/
 	}
 	
 	public static void addSondage(Sondage s)

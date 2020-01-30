@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -23,10 +24,10 @@ public class Sondage {
 	
 	private boolean clos;
 	
-	@OneToMany(mappedBy = "sondage")
+	@OneToMany(mappedBy = "sondage",fetch = FetchType.LAZY)
 	private List<DateReunion> dateProposees;
 	
-	@OneToMany(mappedBy = "sondage")
+	@OneToMany(mappedBy = "sondage",fetch = FetchType.LAZY)
 	private List<Choix> choix;
 	
 	@Temporal(TemporalType.DATE)
@@ -37,10 +38,10 @@ public class Sondage {
 	
 	
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	
-	@OneToOne(mappedBy = "sondage")
+	@OneToOne(mappedBy = "sondage",fetch = FetchType.LAZY)
 	private Reunion reunion;
 	
 	

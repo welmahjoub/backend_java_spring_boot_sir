@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import Repository.SondageRepository;
 import Repository.UserRepository;
+import entity.Sondage;
 import entity.User;
 
 public class JpaTest {
@@ -21,6 +23,8 @@ public class JpaTest {
 
 
 		try {
+			
+			
 
         UserRepository.remplirTableUser();
         
@@ -29,7 +33,15 @@ public class JpaTest {
         for (User utilisateur : users) {
 			System.out.println("1" + utilisateur.getNom() +" "+utilisateur.getPrenom() );
 		}
-
+        
+        SondageRepository.remplirTableSondage();
+        
+        List<Sondage> sonds = SondageRepository.getListeSondage();
+        
+        for (Sondage s : sonds) {
+			System.out.println("Sondage : "+s.getUser().getNom() );
+		}
+        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
