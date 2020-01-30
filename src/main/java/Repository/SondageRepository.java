@@ -48,7 +48,7 @@ public class SondageRepository {
 	public static List<Sondage> getListeSondage()
 	{
 		
-		Query q=manager.createQuery("select a from Sondage");
+		Query q=manager.createQuery("select a from Sondage as a ");
 		
 		return q.getResultList();
 	}

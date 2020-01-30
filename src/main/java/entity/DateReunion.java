@@ -26,6 +26,10 @@ public class DateReunion {
 	@Temporal(TemporalType.DATE)
 	Date date;
 
+	public DateReunion()
+	{
+		
+	}
 	public DateReunion(Sondage sondage, Date date) {
 		super();
 		this.sondage = sondage;
