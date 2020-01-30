@@ -46,7 +46,10 @@ public class SondageRepository {
 	
 	public static void addSondage(Sondage s)
 	{
+		manager.getTransaction().begin();
 		manager.persist(s);	
+		manager.getTransaction().commit();
+		//manager.close();
 	}
 	
 }
