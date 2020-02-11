@@ -10,8 +10,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.logging.annotations.Param;
-
 import Repository.UserRepository;
 import entity.User;
 
@@ -33,6 +31,21 @@ public class UserWebService {
 	public User getUser(@PathParam ("id") String idUser) {
 		return UserRepository.findById(idUser);
 	}
+	
+
+	@POST
+	@Path("/add2")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String add(String nom, String prenom,String mail) {
+		
+		User u=new User(nom, prenom, mail);
+		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
+		UserRepository.addUser(u);
+		
+		return "ok ajouter effectuer";
+	}
+	
 	
 	@POST
 	@Path("/add")

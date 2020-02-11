@@ -7,12 +7,17 @@ import javax.ws.rs.core.MediaType;
 
 import entity.Choix;
 
+
+
 @Path("/hello")
 public class SampleWebService {
+	
+
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String sayHello() {
+		
 		return "Hello, how are you?";
 	}
 

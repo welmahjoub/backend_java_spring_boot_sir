@@ -42,7 +42,7 @@ public class UserRepository {
 	public static List<User> getListeUser()
 	{
 		
-		Query q=manager.createQuery("select a from User a");
+		Query q=manager.createQuery("select a from User as a");
 		
 		return q.getResultList();
 	}

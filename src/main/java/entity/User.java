@@ -19,13 +19,24 @@ public class User {
 	private String nom, prenom, mail;
 	
 	@OneToMany(mappedBy = "user")
-	 @JsonManagedReference
+	@JsonManagedReference
 	private List<Sondage> sondages;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Choix> choix;
 	
+	public User()
+	{
+		
+	}
 	
+	public User(String nom, String prenom, String mail) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+	}
+
 	public long getId() {
 		return id;
 	}
