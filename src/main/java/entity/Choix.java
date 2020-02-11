@@ -33,6 +33,17 @@ public class Choix {
 	@JsonBackReference
 	private Sondage sondage;
 	
+	
+	
+	public Choix( Date datechoisie, User user, Sondage sondage) {
+		
+		this.datechoisie = datechoisie;
+		this.user = user;
+		this.sondage = sondage;
+	}
+	public Choix() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getPreferenceAliments() {
 		return preferenceAliments;
 	}

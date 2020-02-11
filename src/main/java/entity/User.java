@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,15 +20,15 @@ public class User {
 	private String nom, prenom, mail;
 	
 	@OneToMany(mappedBy = "user")
-	@JsonManagedReference
+	 @JsonManagedReference
 	private List<Sondage> sondages;
+	
 	
 	@OneToMany(mappedBy = "user")
 	private List<Choix> choix;
 	
-	public User()
-	{
-		
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	public User(String nom, String prenom, String mail) {
@@ -35,6 +36,8 @@ public class User {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
+		sondages=new ArrayList<Sondage>();
+		choix=new ArrayList<Choix>();
 	}
 
 	public long getId() {
