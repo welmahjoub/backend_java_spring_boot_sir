@@ -12,11 +12,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import Repository.ChoixRepository;
 import Repository.ReunionRepository;
 import Repository.SondageRepository;
 import Repository.UserRepository;
 import Utils.Util;
 import dto.SondageDto;
+import dto.UserDto;
+import dto.choixDto;
+import entity.Choix;
 import entity.DateReunion;
 import entity.Reunion;
 import entity.Sondage;
@@ -72,6 +76,26 @@ public class SondageWebService {
 	public Sondage getSondage(@PathParam ("id") String idsondage) {
 		
 		return SondageRepository.findById(idsondage);
+	}
+	
+	@POST
+	@Path("/participer")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String particuper(choixDto c) {
+		
+		UserDto u = new UserDto(c.getNom(),c.getPrenom(),c.getMail());
+		
+		
+		User user=UserRepository.addUser(u);
+
+		Sondage sond = SondageRepository.findById(c.getIdSondage());
+		
+		Choix choix = new Choix(Util.convertirDate(c.getDate()), user, sond);
+		
+		ChoixRepository.addChoix(choix);
+		
+		return "ok ajout choix effectuer";
 	}
 
 }

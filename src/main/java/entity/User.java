@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,10 +23,23 @@ public class User {
 	 @JsonManagedReference
 	private List<Sondage> sondages;
 	
+	
 	@OneToMany(mappedBy = "user")
 	private List<Choix> choix;
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 	
+	public User(String nom, String prenom, String mail) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		sondages=new ArrayList<Sondage>();
+		choix=new ArrayList<Choix>();
+	}
+
 	public long getId() {
 		return id;
 	}

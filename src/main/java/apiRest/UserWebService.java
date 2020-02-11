@@ -10,9 +10,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.logging.annotations.Param;
-
 import Repository.UserRepository;
+import dto.UserDto;
 import entity.User;
 
 @Path("/users")
@@ -27,6 +26,7 @@ public class UserWebService {
 		return UserRepository.getListeUser();
 	}
 	
+	
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -38,12 +38,14 @@ public class UserWebService {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String addUser(User u) {
+	public String addUser(UserDto u) {
 		
 		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
 		UserRepository.addUser(u);
 		
 		return "ok ajouter effectuer";
 	}
+	
+	
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import dto.UserDto;
 import entity.User;
 import jpa.EntityManagerHelper;
 
@@ -47,13 +48,18 @@ public class UserRepository {
 		return q.getResultList();
 	}
 	
-	public static void addUser(User u)
+	public static User addUser(UserDto u)
 	{
+		User user=new User(u.getNom(),u.getPrenom(), u.getMail());
+		
 		manager.getTransaction().begin();
-        manager.persist(u);
+        manager.persist(user);
         manager.getTransaction().commit();
 		
+        return user;
 	}
+	
+	
 	
 	public static User findById(String id)
 	{
