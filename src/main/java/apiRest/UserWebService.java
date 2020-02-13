@@ -14,6 +14,7 @@ import Repository.UserRepository;
 import dto.UserDto;
 import entity.User;
 
+
 @Path("/users")
 public class UserWebService {
 
@@ -34,31 +35,17 @@ public class UserWebService {
 		return UserRepository.findById(idUser);
 	}
 	
-
-	@POST
-	@Path("/add2")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String add(String nom, String prenom,String mail) {
-		
-		User u=new User(nom, prenom, mail);
-		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
-		UserRepository.addUser(u);
-		
-		return "ok ajouter effectuer";
-	}
-	
 	
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String addUser(UserDto u) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public User addUser(UserDto u) {
 		
 		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
-		UserRepository.addUser(u);
+
 		
-		return "ok ajouter effectuer";
+		return UserRepository.addUser(u);
 	}
 	
 	

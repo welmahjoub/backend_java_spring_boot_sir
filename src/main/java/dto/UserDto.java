@@ -7,9 +7,14 @@ public class UserDto {
 	private String mail;
 	
 	
+	public UserDto() {
+		
+	}
 	
-	public UserDto(String nom2, String prenom2, String mail2) {
-		// TODO Auto-generated constructor stub
+	public UserDto(String nom, String prenom, String mail) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
 	}
 	public String getNom() {
 		return nom;
