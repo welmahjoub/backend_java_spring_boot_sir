@@ -9,6 +9,7 @@ import entity.Choix;
 
 
 
+
 @Path("/hello")
 public class SampleWebService {
 	
