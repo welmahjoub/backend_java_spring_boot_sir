@@ -4,6 +4,7 @@ public class choixDto {
 	private String nom;
 	private String prenom;
 	private String mail;
+	private String password;
 	private String date;
 	private String idSondage;
 	
@@ -38,5 +39,11 @@ public class choixDto {
 	}
 	public void setIdSondage(String idSondage) {
 		this.idSondage = idSondage;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

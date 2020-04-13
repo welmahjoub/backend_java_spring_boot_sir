@@ -27,6 +27,7 @@ public class UserRepository {
 		user1.setNom("Mahjoub");
 		user1.setPrenom("Abdel");
 		user1.setMail("Abdel@gmail.com");
+		user1.setPassword("testtest");
 		manager.persist(user1);
 		
 		
@@ -34,6 +35,7 @@ public class UserRepository {
 		user2.setNom("yaya");
 		user2.setPrenom("simp");
 		user2.setMail("yaya@gmail.com");
+		user2.setPassword("testtest");
 		manager.persist(user2);
 		
 		}
@@ -50,7 +52,7 @@ public class UserRepository {
 	
 	public static User addUser(UserDto u)
 	{
-		User user=new User(u.getNom(),u.getPrenom(), u.getMail());
+		User user=new User(u.getNom(),u.getPrenom(), u.getMail(), u.getPassword());
 		
 		manager.getTransaction().begin();
         manager.persist(user);

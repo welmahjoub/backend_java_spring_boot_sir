@@ -88,7 +88,7 @@ public class SondageWebService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String particuper(choixDto c) {
 		
-		UserDto u = new UserDto(c.getNom(),c.getPrenom(),c.getMail());
+		UserDto u = new UserDto(c.getNom(),c.getPrenom(),c.getMail(), c.getPassword());
 		
 		
 		User user=UserRepository.addUser(u);
