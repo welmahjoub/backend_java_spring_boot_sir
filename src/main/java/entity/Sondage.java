@@ -31,7 +31,7 @@ public class Sondage {
 	@JsonBackReference
 	private User user;
 	
-	@OneToOne(mappedBy = "sondage")
+	@OneToOne( cascade = CascadeType.PERSIST)
 	@JsonManagedReference
 	private Reunion reunion;
 	

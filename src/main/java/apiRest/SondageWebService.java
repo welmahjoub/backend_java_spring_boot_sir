@@ -20,6 +20,7 @@ import Utils.Util;
 import dto.SondageDto;
 import dto.UserDto;
 import dto.choixDto;
+import dto.valideDto;
 import entity.Choix;
 import entity.DateReunion;
 import entity.Reunion;
@@ -52,10 +53,12 @@ public class SondageWebService {
 		user=UserRepository.findById(data.getIdUser());
 		proposition=new ArrayList<DateReunion>();
 		
-		s=new Sondage(proposition, user, r);
 		
 		r=new Reunion(data.getIntitule(), data.getResume(), s) ;
 		
+		s=new Sondage(proposition, user, r);
+		
+//		r.setSondage(s);
 		
 		for (String date : data.getDates()) {
 			 
@@ -64,8 +67,9 @@ public class SondageWebService {
 			proposition.add(dr);
 		}
 
-		SondageRepository.addSondage(s);
-		ReunionRepository.addReunion(r);
+		s= SondageRepository.addSondage(s);
+
+		//ReunionRepository.addReunion(r);
 		
 		return "ok ajouter  effectuer";
 	}
@@ -96,6 +100,32 @@ public class SondageWebService {
 		ChoixRepository.addChoix(choix);
 		
 		return "ok ajout choix effectuer";
+	}
+	
+	@POST
+	@Path("/valider")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String validerDate(valideDto dateChoisie) {
+		
+		Date dateReunion = Util.convertirDate(dateChoisie.getDate());
+		
+		Sondage sond = SondageRepository.findById(dateChoisie.getId());
+		
+		System.err.println( sond.getDateProposees());
+		
+		
+	if( sond != null && Util.isExiste(sond.getDateProposees(), dateReunion)) {
+		
+		sond.setDatereunion(dateReunion);
+		SondageRepository.addSondage(sond);
+		
+		return "Valider ok";
+	}
+	
+	return "Valider not ok";
+		
+		
 	}
 
 }

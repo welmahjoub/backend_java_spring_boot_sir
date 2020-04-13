@@ -15,6 +15,7 @@ public class SondageRepository {
 
 	static EntityManager manager = EntityManagerHelper.getEntityManager();
 	
+<<<<<<< HEAD
 	public static void remplirTableSondage()
 	{
 		
@@ -35,7 +36,7 @@ public class SondageRepository {
 		manager.persist(s);
 		
 		Reunion r=  new Reunion();
-//		r.setSondage(s);
+		r.setSondage(s);
 		r.setIntitule("reunion import");
 		r.setLienPad("www.reg.com");
 		r.setResume("blalalaall");
@@ -43,29 +44,34 @@ public class SondageRepository {
 		
 		}
 	}
+=======
 	
+>>>>>>> branch 'master' of https://github.com/ysimp/SirProject.git
 	
 	public static List<Sondage> getListeSondage()
 	{
 		
-		Query q=manager.createQuery("select a from Sondage as a ");
+		Query q=manager.createQuery("select a from Sondage");
+		
+		//return q.getResultList();
+		
 		
 		return q.getResultList();
+		
+		/*
+		List<Sondage> 
+		for (Sondage sond : sondages) {
+			System.out.println(sond.getUser().getNom());
+		}
+		
+		return sondages;*/
 	}
 	
-	public static Sondage addSondage(Sondage s)
+	public static void addSondage(Sondage s)
 	{
 		manager.getTransaction().begin();
-		manager.persist(s);
+		manager.persist(s);	
 		manager.getTransaction().commit();
-		
-		return s;
-		
-	}
-	
-	public static Sondage findById(String id)
-	{
-		return manager.find(Sondage.class, Long.valueOf(id));
 		
 	}
 	
