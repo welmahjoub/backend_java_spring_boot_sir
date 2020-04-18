@@ -69,4 +69,13 @@ public class SondageRepository {
 		
 	}
 	
+	public static List<Sondage> findByIdUser(String id)
+	{
+		
+		Query q=manager.createQuery("select a from Sondage a join a.user u on u.id ="+id);
+		
+		return q.getResultList();
+		
+	}
+	
 }

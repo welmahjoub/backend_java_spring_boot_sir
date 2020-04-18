@@ -82,6 +82,15 @@ public class SondageWebService {
 		return SondageRepository.findById(idsondage);
 	}
 	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Sondage> getSondagesById(@PathParam ("id") String idUser) {
+		
+		System.err.println("hi"+idUser);
+		return SondageRepository.findByIdUser(idUser);
+	}
+	
 	@POST
 	@Path("/participer")
 	@Consumes(MediaType.APPLICATION_JSON)
