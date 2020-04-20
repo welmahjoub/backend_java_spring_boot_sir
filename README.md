@@ -1,1 +1,2 @@
-# Template de projet pour le TP JPA 2019 UniR
+backend projet sir
+Abdrahmane EL MAHJOUB & Yaya SIMPARA
