@@ -43,41 +43,58 @@ public class SondageWebService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addSondage(SondageDto  data) {
 		
-		User user;
-		Sondage s = null;
-		Reunion r=null;
-		List<Proposition> proposition;
 		
-		user=UserRepository.findById(data.getIdUser());
-		proposition=new ArrayList<Proposition>();
+		User user=UserRepository.findById(data.getIdUser());
+		List<Proposition> proposition=new ArrayList<Proposition>();
 		
+		Reunion reunion=new Reunion(data.getIntitule(), data.getResume()) ;
 		
-		r=new Reunion(data.getIntitule(), data.getResume(), s) ;
+		Sondage sondage=new Sondage(proposition, user, reunion);
 		
-		s=new Sondage(proposition, user, r);
-		
-		r.setSondage(s);
+		reunion.setSondage(sondage);
 		
 		for (String date : data.getDates()) {
 			 
 			Date d=Util.convertirDate(date);
-			Proposition dr=new Proposition(s, d);
+			Proposition dr=new Proposition(sondage, d);
 			proposition.add(dr);
 		}
 
-		s= SondageRepository.persistSondage(s);
+		SondageRepository.persistSondage(sondage);
 		
 		return "ok ajouter  effectuer";
 	}
 	
 	@PUT
-	@Path("/edit/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String editSondage(Sondage sondage) {
+	@Path("/edit/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String editSondage(@PathParam("id") String idSondage,SondageDto  data) {
 		
-		SondageRepository.editSondage(sondage);
-		 
-		 return " modif ok";
+		Sondage sondage=SondageRepository.findById(idSondage);
+		
+		if( sondage != null)
+		{
+			sondage.getReunion().setIntitule(data.getIntitule()); 
+			sondage.getReunion().setResume(data.getResume());
+			
+			List<Proposition> proposition=new ArrayList<Proposition>();
+			
+			for (String date : data.getDates()) {
+				 
+				Date d=Util.convertirDate(date);
+				Proposition dr=new Proposition(sondage, d);
+				proposition.add(dr);
+			}
+			
+			sondage.setDateProposees(proposition);
+			SondageRepository.persistSondage(sondage);
+			
+			return " modif ok";
+		}
+		
+		return " modif not ok";
+		
 	}
 	
 	@DELETE

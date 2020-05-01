@@ -4,6 +4,7 @@ import java.util.List;
 
 public class SondageDto {
 
+
 	private String resume;
 	private String intitule;
 	private String idUser;
@@ -48,6 +49,8 @@ public class SondageDto {
 	public void setDates(List<String> dates) {
 		this.dates = dates;
 	}
+
+
 	
 	
 }

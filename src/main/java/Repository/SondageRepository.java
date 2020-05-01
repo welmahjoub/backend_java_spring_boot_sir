@@ -64,16 +64,7 @@ public class SondageRepository {
 		
 	}
 	
-	public static Sondage editSondage(Sondage s)
-	{
-		manager.getTransaction().begin();
-		s=manager.merge(s);
-		manager.persist(s);
-		manager.getTransaction().commit();
-		
-		return s;
-		
-	}
+	
 	
 	public static Sondage deleteSondage(String id)
 	{
