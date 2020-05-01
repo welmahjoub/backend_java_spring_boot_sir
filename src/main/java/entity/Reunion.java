@@ -16,29 +16,30 @@ public class Reunion {
 	
 	private String intitule, resume, code, lienPad;
 	
-//	@OneToOne
-//	@JsonBackReference
-//	private Sondage sondage;
+	
+	@JsonBackReference
+	@OneToOne
+	private Sondage sondage;
 	
 	
 	public Reunion(String intitule, String resume, Sondage sondage) {
 		super();
 		this.intitule = intitule;
 		this.resume = resume;
-//		this.sondage = sondage;
+		this.sondage = sondage;
 	}
 
 	public Reunion() {
 		// TODO Auto-generated constructor stub
 	}
 
-//	public Sondage getSondage() {
-//		return sondage;
-//	}
-//
-//	public void setSondage(Sondage sondage) {
-//		this.sondage = sondage;
-//	}
+	public Sondage getSondage() {
+		return sondage;
+	}
+
+	public void setSondage(Sondage sondage) {
+		this.sondage = sondage;
+	}
 
 	
 	public String getLienPad() {

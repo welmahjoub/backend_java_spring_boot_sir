@@ -1,39 +1,49 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 @Entity
-public class DateReunion {
+public class Proposition {
 
 	@Id
 	@GeneratedValue
 	private long id;
 	
-	
-	@ManyToOne
-	@JsonBackReference
-	private Sondage sondage;
-	
 	@Temporal(TemporalType.DATE)
 	Date date;
+	
+	@JsonBackReference
+	@ManyToOne
+	private Sondage sondage;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "proposition",cascade = CascadeType.ALL)
+	private List<Participant> users;
 
-	public DateReunion()
+	public Proposition()
 	{
 		
 	}
-	public DateReunion(Sondage sondage, Date date) {
+	
+	public Proposition(Sondage sondage, Date date) {
 		super();
 		this.sondage = sondage;
 		this.date = date;
+		users=new ArrayList<Participant>();
 	}
 
 	public long getId() {
@@ -59,9 +69,12 @@ public class DateReunion {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	@Override
-	public String toString() {
-		return "DateReunion [id=" + id + ", sondage=" + sondage + ", date=" + date + "]";
+	
+	public List<Participant> getUsers() {
+		return users;
+	}
+	public void setUsers(List<Participant> users) {
+		this.users = users;
 	}
 	
 	

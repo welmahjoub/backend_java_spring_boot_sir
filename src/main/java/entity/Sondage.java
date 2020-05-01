@@ -27,30 +27,29 @@ public class Sondage {
 	
 	private boolean clos;
 	
-	@ManyToOne()
 	@JsonBackReference
+	@ManyToOne()
 	private User user;
 	
-	@OneToOne( cascade = CascadeType.PERSIST)
+
 	@JsonManagedReference
+	@OneToOne( cascade = CascadeType.ALL)
 	private Reunion reunion;
 	
-	@OneToMany(mappedBy = "sondage",cascade = CascadeType.PERSIST)
-	@JsonManagedReference
-	private List<DateReunion> dateProposees;
 	
-	@OneToMany(mappedBy = "sondage")
 	@JsonManagedReference
-	private List<Choix> choix;
+	@OneToMany(mappedBy = "sondage",cascade = CascadeType.ALL)
+	private List<Proposition> dateProposees;
 	
-	@Temporal(TemporalType.DATE)
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateReunion;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	
 	
-	public Sondage(List<DateReunion> dateProposees, User user, Reunion reunion) {
+	public Sondage(List<Proposition> dateProposees, User user, Reunion reunion) {
 		super();
 		this.dateProposees = dateProposees;
 		this.user = user;
@@ -73,11 +72,11 @@ public class Sondage {
 		this.clos = clos;
 	}
 
-	public List<DateReunion> getDateProposees() {
+	public List<Proposition> getDateProposees() {
 		return dateProposees;
 	}
 
-	public void setDateProposees(List<DateReunion> dateProposees) {
+	public void setDateProposees(List<Proposition> dateProposees) {
 		this.dateProposees = dateProposees;
 	}
 
@@ -89,17 +88,6 @@ public class Sondage {
 		this.dateReunion = datereunion;
 	}
 
-	
-	
-	
-	public List<Choix> getChoix() {
-		return choix;
-	}
-	
-	public void setChoix(List<Choix> choix) {
-		this.choix = choix;
-	}
-	
 	public Reunion getReunion() {
 		return reunion;
 	}

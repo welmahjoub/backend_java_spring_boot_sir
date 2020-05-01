@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import entity.Proposition;
 import entity.Reunion;
 import entity.Sondage;
 import entity.User;
@@ -53,7 +54,7 @@ public class SondageRepository {
 		return q.getResultList();
 	}
 	
-	public static Sondage addSondage(Sondage s)
+	public static Sondage persistSondage(Sondage s)
 	{
 		manager.getTransaction().begin();
 		manager.persist(s);
@@ -63,6 +64,30 @@ public class SondageRepository {
 		
 	}
 	
+	public static Sondage editSondage(Sondage s)
+	{
+		manager.getTransaction().begin();
+		s=manager.merge(s);
+		manager.persist(s);
+		manager.getTransaction().commit();
+		
+		return s;
+		
+	}
+	
+	public static Sondage deleteSondage(String id)
+	{
+		manager.getTransaction().begin();
+		Sondage s=findById(id);
+		if(s!=null)
+		{
+			manager.remove(s);
+			manager.getTransaction().commit();
+			
+		}
+		return s;
+		
+	}
 	public static Sondage findById(String id)
 	{
 		return manager.find(Sondage.class, Long.valueOf(id));
@@ -75,6 +100,12 @@ public class SondageRepository {
 		Query q=manager.createQuery("select a from Sondage a join a.user u on u.id ="+id);
 		
 		return q.getResultList();
+		
+	}
+	
+	public static Proposition findPropositionById(String id)
+	{
+		return manager.find(Proposition.class, Long.valueOf(id));
 		
 	}
 	

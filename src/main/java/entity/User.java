@@ -19,16 +19,14 @@ public class User {
 	
 	private String nom, prenom, mail, password;
 	
+	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
-	 @JsonManagedReference
 	private List<Sondage> sondages;
 	
 	
-	@OneToMany(mappedBy = "user")
-	private List<Choix> choix;
-	
 	public User() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	public User(String nom, String prenom, String mail,String password) {
@@ -38,7 +36,7 @@ public class User {
 		this.mail = mail;
 		this.password = password;
 		sondages=new ArrayList<Sondage>();
-		choix=new ArrayList<Choix>();
+	
 	}
 
 	public long getId() {
@@ -81,13 +79,7 @@ public class User {
 		this.sondages = sondages;
 	}
 	
-	public List<Choix> getChoix() {
-		return choix;
-	}
-	
-	public void setChoix(List<Choix> choix) {
-		this.choix = choix;
-	}
+
 
 	public String getPassword() {
 		return password;

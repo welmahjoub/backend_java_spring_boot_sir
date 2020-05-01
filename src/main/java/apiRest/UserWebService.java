@@ -42,10 +42,10 @@ public class UserWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public User addUser(UserDto u) {
 		
-		System.out.println(u.getNom()+" "+u.getMail()+" " + u.getPrenom());
-
+		User user=new User(u.getNom(),u.getPrenom(), u.getMail(), u.getPassword());
 		
-		return UserRepository.addUser(u);
+		
+		return UserRepository.addUser(user);
 	}
 	
 	

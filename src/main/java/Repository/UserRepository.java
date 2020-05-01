@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import dto.UserDto;
 import entity.User;
 import jpa.EntityManagerHelper;
 
@@ -45,14 +44,13 @@ public class UserRepository {
 	public static List<User> getListeUser()
 	{
 		
-		Query q=manager.createQuery("select a from User as a");
+		Query q=manager.createQuery("select a from User as a",User.class);
 		
 		return q.getResultList();
 	}
 	
-	public static User addUser(UserDto u)
+	public static User addUser(User user)
 	{
-		User user=new User(u.getNom(),u.getPrenom(), u.getMail(), u.getPassword());
 		
 		manager.getTransaction().begin();
         manager.persist(user);
@@ -69,4 +67,6 @@ public class UserRepository {
 		
 	}
 	
+	
+
 }
