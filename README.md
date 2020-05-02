@@ -2,14 +2,16 @@
 
 # Requirement 
 
-jdk / jre
-IDE
+JDK / JRE / IDE
 
-# Documentation 
+# Diagrammes 
 
 voir fichier [design](Design.md "design").
 
-voir aussi la javadoc dans le dossier doc 
+# Java doc
+
+voir [doc](doc "documentation"). 
+
 
 # Api 
 
@@ -50,9 +52,11 @@ puis mettez cette configuration :
 
 
 type : HSQL Database Engine Server
+
 URL  : jdbc:hsqldb:hsql://localhost:9004/
 
 # Authors 
 
 Abdrahmane EL MAHJOUB
+
 Yaya SIMPARA
