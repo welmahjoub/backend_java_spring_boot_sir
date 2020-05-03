@@ -13,7 +13,7 @@ public class Util {
 	{
 		Date date1=null;
 		try {
-			 date1 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+			 date1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(date);
 		} catch (ParseException e) {
 			
 			e.printStackTrace();

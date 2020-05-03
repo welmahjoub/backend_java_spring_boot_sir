@@ -23,7 +23,7 @@ public class Proposition {
 	@GeneratedValue
 	private long id;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	Date date;
 	
 	@JsonBackReference

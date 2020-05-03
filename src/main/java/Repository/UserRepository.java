@@ -16,11 +16,9 @@ public class UserRepository {
 	{
 		
 		int number = manager.createQuery("Select a From User a", User.class).getResultList().size();
-		System.err.println("by");
 		
 		if (number == 0) {	
 			
-			System.err.println("hi");
 		
 		User user1=new User();
 		user1.setNom("Mahjoub");

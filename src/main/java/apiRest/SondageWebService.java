@@ -99,8 +99,7 @@ public class SondageWebService {
 	
 	@DELETE
 	@Path("/delete/{id}")
-	//@Produces(MediaType.TEXT_PLAIN) 
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteSondage(@PathParam ("id") String idsondage) {
 		
 		 if(SondageRepository.deleteSondage(idsondage)!=null)
