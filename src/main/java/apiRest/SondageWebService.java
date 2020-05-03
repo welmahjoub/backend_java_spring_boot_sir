@@ -99,6 +99,7 @@ public class SondageWebService {
 	
 	@DELETE
 	@Path("/delete/{id}")
+	//@Produces(MediaType.TEXT_PLAIN) 
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteSondage(@PathParam ("id") String idsondage) {
 		
