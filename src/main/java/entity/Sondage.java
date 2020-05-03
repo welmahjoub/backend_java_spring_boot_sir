@@ -38,7 +38,7 @@ public class Sondage {
 	
 	
 	@JsonManagedReference
-	@OneToMany(mappedBy = "sondage",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sondage",orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Proposition> dateProposees;
 	
 	
@@ -77,7 +77,9 @@ public class Sondage {
 	}
 
 	public void setDateProposees(List<Proposition> dateProposees) {
-		this.dateProposees = dateProposees;
+		
+		this.dateProposees.clear();
+		this.dateProposees.addAll(dateProposees);
 	}
 
 	public Date getDatereunion() {
