@@ -38,7 +38,7 @@ public class Sondage {
 	
 	
 	@JsonManagedReference
-	@OneToMany(mappedBy = "sondage",orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sondage",orphanRemoval = true,cascade = CascadeType.ALL)
 	private List<Proposition> dateProposees;
 	
 	
