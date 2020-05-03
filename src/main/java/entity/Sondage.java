@@ -45,7 +45,7 @@ public class Sondage {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateReunion;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreation;
 	
 	
