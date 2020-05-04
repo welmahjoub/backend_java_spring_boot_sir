@@ -157,7 +157,7 @@ public class SondageWebService {
      }
 	 
 	
-	 @GET
+	 @POST
 	 @Path("/valider/{id}")
 	 @Produces(MediaType.TEXT_PLAIN)
 	 public String validerDate(@PathParam("id") String idProposition) {
@@ -171,6 +171,7 @@ public class SondageWebService {
 			Sondage sond =proposition.getSondage();
 			
 			sond.setDatereunion(proposition.getDate());
+			sond.setClos(true);
 			
 			SondageRepository.persistSondage(sond);
 			
