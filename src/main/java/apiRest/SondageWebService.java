@@ -49,6 +49,7 @@ public class SondageWebService {
 		
 		Reunion reunion=new Reunion(data.getIntitule(), data.getResume()) ;
 		
+		System.err.println(user.getId());
 		Sondage sondage=new Sondage(proposition, user, reunion);
 		
 		reunion.setSondage(sondage);
@@ -75,6 +76,8 @@ public class SondageWebService {
 		
 		if( sondage != null)
 		{
+			
+			
 			sondage.getReunion().setIntitule(data.getIntitule()); 
 			sondage.getReunion().setResume(data.getResume());
 			
@@ -86,6 +89,7 @@ public class SondageWebService {
 				Proposition dr=new Proposition(sondage, d);
 				proposition.add(dr);
 			}
+			
 			
 			sondage.setDateProposees(proposition);
 			SondageRepository.persistSondage(sondage);
