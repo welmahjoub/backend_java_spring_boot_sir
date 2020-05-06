@@ -40,8 +40,8 @@ public class SondageWebService {
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String addSondage(SondageDto  data) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean addSondage(SondageDto  data) {
 		
 		
 		User user=UserRepository.findById(data.getIdUser());
@@ -63,14 +63,14 @@ public class SondageWebService {
 
 		SondageRepository.persistSondage(sondage);
 		
-		return "ok ajouter  effectuer";
+		return true;
 	}
 	
 	@PUT
 	@Path("/edit/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String editSondage(@PathParam("id") String idSondage,SondageDto  data) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean editSondage(@PathParam("id") String idSondage,SondageDto  data) {
 		
 		Sondage sondage=SondageRepository.findById(idSondage);
 		
@@ -94,22 +94,22 @@ public class SondageWebService {
 			sondage.setDateProposees(proposition);
 			SondageRepository.persistSondage(sondage);
 			
-			return " modif ok";
+			return true;
 		}
 		
-		return " modif not ok";
+		return false;
 		
 	}
 	
 	@DELETE
 	@Path("/delete/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String deleteSondage(@PathParam ("id") String idsondage) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean deleteSondage(@PathParam ("id") String idsondage) {
 		
 		 if(SondageRepository.deleteSondage(idsondage)!=null)
-			 return " delete ok ";
+			 return true;
 		 else
-			 return " delete not ok ";
+			 return false;
 	}
 	
 	@GET
@@ -133,8 +133,8 @@ public class SondageWebService {
     @POST
     @Path("/participer")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String particuper(ParticipantDto data) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean particuper(ParticipantDto data) {
   
 	  Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail());
 	  
@@ -147,10 +147,10 @@ public class SondageWebService {
 		  
 		  SondageRepository.persistSondage(prop.getSondage()); 
 		  
-		  return "ok ajout participant effectuer";
+		  return true;
 	  }
 	  
-	  return "participation not ok";
+	  return false;
 	 
 	  
 	 
@@ -159,8 +159,8 @@ public class SondageWebService {
 	
 	 @POST
 	 @Path("/valider/{id}")
-	 @Produces(MediaType.TEXT_PLAIN)
-	 public String validerDate(@PathParam("id") String idProposition) {
+	 @Produces(MediaType.APPLICATION_JSON)
+	 public boolean validerDate(@PathParam("id") String idProposition) {
 		
 		
 		Proposition proposition = SondageRepository.findPropositionById(idProposition);
@@ -175,10 +175,10 @@ public class SondageWebService {
 			
 			SondageRepository.persistSondage(sond);
 			
-			return "Valider ok";
+			return true;
 		}
 	
-		return "Valider not ok";
+		return false;
 		
 	 }
 
