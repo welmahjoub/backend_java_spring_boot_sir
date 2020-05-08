@@ -136,7 +136,10 @@ public class SondageWebService {
     @Produces(MediaType.APPLICATION_JSON)
     public boolean particuper(ParticipantDto data) {
   
-	  Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail());
+	  //Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail());
+    	
+	  Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail(), 
+			  							 data.getPreferences(), data.getAllergies());
 	  
 	  Proposition prop=SondageRepository.findPropositionById(data.getIdProposition());
 	  

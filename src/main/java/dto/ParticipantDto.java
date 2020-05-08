@@ -5,7 +5,8 @@ public class ParticipantDto {
 	private String nom;
 	private String prenom;
 	private String mail;
-	
+	private String preferences;
+	private String allergies;
 	private String idProposition;
 	
 	
@@ -33,6 +34,18 @@ public class ParticipantDto {
 	}
 	public void setIdProposition(String idProposition) {
 		this.idProposition = idProposition;
+	}
+	public String getPreferences() {
+		return preferences;
+	}
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+	public String getAllergies() {
+		return allergies;
+	}
+	public void setAllergies(String allergies) {
+		this.allergies = allergies;
 	}
 	
 }

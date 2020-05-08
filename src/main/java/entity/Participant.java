@@ -14,7 +14,7 @@ public class Participant {
 	@GeneratedValue
 	private long id;
 	
-	private String nom, prenom, mail;
+	private String nom, prenom, mail, preferences, allergies;
 	
 	@JsonBackReference
 	@ManyToOne
@@ -31,6 +31,17 @@ public class Participant {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
+
+		
+	}
+	
+	public Participant(String nom, String prenom, String mail, String preferences, String allergies) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.preferences = preferences;
+		this.allergies = allergies;
 
 		
 	}
@@ -67,6 +78,22 @@ public class Participant {
 		this.mail = mail;
 	}
 
+
+	public String getPreferences() {
+		return preferences;
+	}
+
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+
+	public String getAllergies() {
+		return allergies;
+	}
+
+	public void setAllergies(String allergies) {
+		this.allergies = allergies;
+	}
 
 	public Proposition getProposition() {
 		return proposition;
