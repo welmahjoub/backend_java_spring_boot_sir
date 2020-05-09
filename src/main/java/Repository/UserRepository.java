@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import entity.Participant;
 import entity.User;
 import jpa.EntityManagerHelper;
 
@@ -55,6 +56,20 @@ public class UserRepository {
         manager.getTransaction().commit();
 		
         return user;
+	}
+	
+	public static User deleteUser(String id) {
+		
+		User u = findById(id);
+		
+		if(u!=null) {
+			manager.getTransaction().begin();
+			
+			manager.remove(u);
+			
+			manager.getTransaction().commit();
+		}
+		return u;
 	}
 	
 	
