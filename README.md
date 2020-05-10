@@ -40,7 +40,7 @@ ce projet à ete developper à l'aide de :
 
 projet > run As  >  maven Build .. > Goals
 
-: run -Dmaven.tomcat.port=8081
+tomcat7: run -Dmaven.tomcat.port=8081
 
 ## lancer server base de donnees :
 

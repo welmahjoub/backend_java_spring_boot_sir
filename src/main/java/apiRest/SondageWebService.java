@@ -81,17 +81,17 @@ public class SondageWebService {
 			sondage.getReunion().setIntitule(data.getIntitule()); 
 			sondage.getReunion().setResume(data.getResume());
 			
-			List<Proposition> proposition=new ArrayList<Proposition>();
+			//List<Proposition> proposition=new ArrayList<Proposition>();
 			
 			for (String date : data.getDates()) {
 				 
 				Date d=Util.convertirDate(date);
 				Proposition dr=new Proposition(sondage, d);
-				proposition.add(dr);
-			}
+				//proposition.add(dr);
+				sondage.getDateProposees().add(dr);			}
 			
 			
-			sondage.setDateProposees(proposition);
+			//sondage.setDateProposees(proposition);
 			SondageRepository.persistSondage(sondage);
 			
 			return true;
