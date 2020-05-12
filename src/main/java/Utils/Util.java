@@ -121,9 +121,14 @@ public class Util {
 	
 	public  static void createPad(String idSondage,String intutile,String resume)
 	{
-		EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
-
-		client.createPad(idSondage, intutile+" " +resume);
+		try {
+			EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+			client.createPad(idSondage, intutile+" " +resume);
+		} catch (Exception e) {
+		System.err.println("insatller le server de pad sur port 9001");
+		}
+		
+		
 		
 	}
 	
