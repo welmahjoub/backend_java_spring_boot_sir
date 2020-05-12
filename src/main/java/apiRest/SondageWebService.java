@@ -165,9 +165,11 @@ public class SondageWebService {
 	 @Produces(MediaType.APPLICATION_JSON)
 	 public boolean validerDate(@PathParam("id") String idProposition) {
 		
-		
+		 StringBuilder corpsMsg = new StringBuilder("La date final de la reunion est fixée au ");
+		 StringBuilder addresses = new StringBuilder("");
 		Proposition proposition = SondageRepository.findPropositionById(idProposition);
 		
+		corpsMsg.append(proposition.getDate())	;
 		
 		if( proposition != null) {
 			
@@ -177,6 +179,23 @@ public class SondageWebService {
 			sond.setClos(true);
 			
 			SondageRepository.persistSondage(sond);
+			
+
+			 int i = 0;
+			 
+			for( Participant participant: proposition.getUsers()) {
+				
+				addresses.append(participant.getMail());
+				
+				if(i++ == proposition.getUsers().size() - 1){
+			        // Last iteration
+			    }
+				{
+					addresses.append(",");
+				}
+			}
+			
+			Util.sendMail(corpsMsg, addresses);
 			
 			return true;
 		}
