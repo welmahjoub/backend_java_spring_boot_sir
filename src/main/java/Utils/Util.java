@@ -1,10 +1,13 @@
 package Utils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Scanner;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -35,8 +38,8 @@ public class Util {
 	
 	public static boolean sendMail(StringBuilder msg, StringBuilder recepteur) {
 		
-		final String username = "";
-        final String password = "";
+		final String username = getMail();
+        final String password = getPassword();
 
         Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -52,10 +55,9 @@ public class Util {
                 });
 
         try {
-        	// recepteur "to_username_a@gmail.com, to_username_b@yahoo.com"
         	
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("projet.dev.2020@gmail.com"));
+            message.setFrom(new InternetAddress(username));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(recepteur.toString())
@@ -76,7 +78,47 @@ public class Util {
         }
 	}
 	
-
+	public static String getMail()
+	{
+		  File myObj = new File("config/mailConfig.txt");
+	      Scanner myReader;
+	      String data="";
+		try {
+			  myReader = new Scanner(myObj);
+		       data = myReader.nextLine();
+		      
+		      myReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	      
+	      
+		return data;
+	}
+	
+	public static String getPassword()
+	{
+		 File myObj = new File("config/mailConfig.txt");
+	      Scanner myReader;
+	      String data="";
+		try {
+			  myReader = new Scanner(myObj);
+		       data = myReader.nextLine();
+		       data = myReader.nextLine();
+		       
+		      myReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	      
+	      
+		return data;
+	}
+	
+	public static void main(String[] args) {
 		
+		System.err.println(getMail());
+		System.err.println(getPassword());
+	}
 
 }
