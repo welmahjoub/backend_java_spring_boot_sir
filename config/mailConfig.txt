@@ -1,2 +1,2 @@
-login remove
-password remove
+login remove test
+password remove test
