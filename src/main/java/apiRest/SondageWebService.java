@@ -164,7 +164,7 @@ public class SondageWebService {
 	 @Path("/valider/{id}")
 	 @Produces(MediaType.APPLICATION_JSON)
 	 public boolean validerDate(@PathParam("id") String idProposition) {
-		
+		 
 		 StringBuilder corpsMsg = new StringBuilder("La date final de la reunion est fixée au ");
 		 StringBuilder addresses = new StringBuilder("");
 		Proposition proposition = SondageRepository.findPropositionById(idProposition);
