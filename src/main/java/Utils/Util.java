@@ -44,21 +44,22 @@ public class Util {
 		
 		final String username = getMail();
         final String password = getPassword();
-
-        Properties prop = new Properties();
-		prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-
+        
         try {
+        	
+        	Properties prop = new Properties();
+    		prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
+        	
+        	Session session = Session.getInstance(prop,
+                    new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(username, password);
+                        }
+                    });
         	
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
@@ -76,24 +77,25 @@ public class Util {
             System.out.println("Done");
             return true;
         } 
-        catch (MessagingException e) {
-            e.printStackTrace();
+        catch (Exception e) {
+        	
+           System.err.println("echec envoie email ");
             return false;
         }
 	}
 	
 	public static String getMail()
 	{
-		  File myObj = new File("config/mailConfig.txt");
-	      Scanner myReader;
+		  
 	      String data="";
 		try {
-			  myReader = new Scanner(myObj);
+			File myObj = new File("config/mailConfig.txt");
+		      Scanner myReader = new Scanner(myObj);
 		       data = myReader.nextLine();
 		      
 		      myReader.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("getmail");
 		}
 	      
 	      
@@ -102,17 +104,17 @@ public class Util {
 	
 	public static String getPassword()
 	{
-		 File myObj = new File("config/mailConfig.txt");
-	      Scanner myReader;
+		
 	      String data="";
 		try {
-			  myReader = new Scanner(myObj);
+			 File myObj = new File("config/mailConfig.txt");
+		      Scanner myReader = new Scanner(myObj);
 		       data = myReader.nextLine();
 		       data = myReader.nextLine();
 		       
 		      myReader.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("getpassword");
 		}
 	      
 	      
