@@ -55,6 +55,13 @@ type : HSQL Database Engine Server
 
 URL  : jdbc:hsqldb:hsql://localhost:9004/
 
+# server de pad 
+https://github.com/ether/etherpad-lite
+
+#configuration 
+
+remplir fichier config/mailConfig.txt
+avec un compte mail et le mot de passe
 # Authors 
 
 Abdrahmane EL MAHJOUB

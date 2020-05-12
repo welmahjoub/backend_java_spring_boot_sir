@@ -63,6 +63,8 @@ public class SondageWebService {
 
 		SondageRepository.persistSondage(sondage);
 		
+		Util.createPad(String.valueOf(sondage.getId()), data.getIntitule(), data.getResume());
+		
 		return true;
 	}
 	

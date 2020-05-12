@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -16,6 +18,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import net.gjerull.etherpad.client.EPLiteClient;
 
 public class Util {
 	
@@ -115,10 +119,20 @@ public class Util {
 		return data;
 	}
 	
+	public  static void createPad(String idSondage,String intutile,String resume)
+	{
+		EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+
+		client.createPad(idSondage, intutile+" " +resume);
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		System.err.println(getMail());
 		System.err.println(getPassword());
+		
+		createPad("sondage", "hi", "hi2");
 	}
 
 }
