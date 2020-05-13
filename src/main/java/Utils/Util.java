@@ -124,14 +124,80 @@ public class Util {
 	public  static void createPad(String idSondage,String intutile,String resume)
 	{
 		try {
-			EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+			//For mahjoub
+//			EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+			
+			//For Yaya
+			EPLiteClient client = new EPLiteClient("http://localhost:9001", "20d57a3bfd9e4cdff8ba3575abd0066367aeb62025ebf343b9fdf109b7eed628");
+			
+			//Create Pad
 			client.createPad(idSondage, intutile+" " +resume);
+			
+			
+			// Get pad text
+			String text = client.getText(idSondage).get("text").toString();
+			
+			System.out.println("Text du pad: \n"+ text);
+			
+			// Get list of all pad ids existing
+			Map result = client.listAllPads();
+			List padIds = (List) result.get("padIDs");
+			
+			System.out.println("Les pads existants");
+			for (Object id : padIds) {
+				System.out.println(id);
+			}
+			
 		} catch (Exception e) {
-		System.err.println("insatller le server de pad sur port 9001");
+			e.printStackTrace();
+		//System.err.println("insatller le server de pad sur port 9001");
 		}
 		
 		
 		
+	}
+	
+	public static void deletePad(String idPad) {
+		//For mahjoub
+//		EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+		
+		//For Yaya
+		EPLiteClient client = new EPLiteClient("http://localhost:9001", "20d57a3bfd9e4cdff8ba3575abd0066367aeb62025ebf343b9fdf109b7eed628");
+		
+		
+		//DeletePad
+		client.deletePad(idPad);
+	}
+	
+	public static void deleteAllPad() {
+		//For mahjoub
+//		EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+		
+		//For Yaya
+		EPLiteClient client = new EPLiteClient("http://localhost:9001", "20d57a3bfd9e4cdff8ba3575abd0066367aeb62025ebf343b9fdf109b7eed628");
+		
+		
+		//DeleteAllPad
+		for (Object id : getListPad()) {
+			client.deletePad(id.toString());
+		}
+		
+	}
+	
+	
+	
+	public static List getListPad() {
+		//For mahjoub
+//		EPLiteClient client = new EPLiteClient("http://localhost:9001", "025cc67775838849d7b92c4a4c3d6e36df2477386fa11f10ce01a0f2ed1c4797");
+		
+		//For Yaya
+		EPLiteClient client = new EPLiteClient("http://localhost:9001", "20d57a3bfd9e4cdff8ba3575abd0066367aeb62025ebf343b9fdf109b7eed628");
+		
+		// Get list of all pad ids existing
+					Map result = client.listAllPads();
+					List padIds = (List) result.get("padIDs");
+					return padIds;
+					
 	}
 	
 	public static void main(String[] args) {
@@ -139,7 +205,10 @@ public class Util {
 		System.err.println(getMail());
 		System.err.println(getPassword());
 		
-		createPad("sondage", "hi", "hi2");
+		deleteAllPad();
+		
+		createPad("test", "hi", "hi2");
+		//To access on pad : http://localhost:9001/p/sondage
 	}
 
 }
