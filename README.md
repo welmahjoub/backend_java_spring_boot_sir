@@ -32,7 +32,7 @@ ce projet à ete developper à l'aide de :
 * Eclipse  : comme IDE 
 * postman : pour tester notre api
 * git / github : pour heberger notre code
-*etherpad : pour cree un pad en ligne et le partager.
+* etherpad : pour cree un pad en ligne et le partager.
 
 # installations 
 
