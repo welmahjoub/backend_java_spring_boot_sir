@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 
 import Repository.SondageRepository;
 import Repository.UserRepository;
+import Utils.ApiPadUtil;
 import Utils.Util;
 import dto.ParticipantDto;
 import dto.SondageDto;
@@ -50,6 +51,7 @@ public class SondageWebService {
 		Reunion reunion=new Reunion(data.getIntitule(), data.getResume()) ;
 		
 		System.err.println(user.getId());
+		
 		Sondage sondage=new Sondage(proposition, user, reunion);
 		
 		reunion.setSondage(sondage);
@@ -63,7 +65,14 @@ public class SondageWebService {
 
 		SondageRepository.persistSondage(sondage);
 		
-		Util.createPad(String.valueOf(sondage.getId()), data.getIntitule(), data.getResume());
+		sondage.getReunion().setLienPad("localhost:9001/"+sondage.getId());
+		sondage.setLien("participe/"+sondage.getId());
+	
+		
+		ApiPadUtil.createPad(String.valueOf(sondage.getId()), data.getIntitule(), data.getResume());
+		
+		
+		SondageRepository.persistSondage(sondage);
 		
 		return true;
 	}
@@ -138,8 +147,7 @@ public class SondageWebService {
     @Produces(MediaType.APPLICATION_JSON)
     public boolean particuper(ParticipantDto data) {
   
-	  //Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail());
-    	
+
 	  Participant part = new Participant(data.getNom(),data.getPrenom(),data.getMail(), 
 			  							 data.getPreferences(), data.getAllergies());
 	  
@@ -196,6 +204,7 @@ public class SondageWebService {
 					addresses.append(",");
 				}
 			}
+			
 			
 			Util.sendMail(corpsMsg, addresses);
 			

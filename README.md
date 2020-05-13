@@ -32,7 +32,7 @@ ce projet à ete developper à l'aide de :
 * Eclipse  : comme IDE 
 * postman : pour tester notre api
 * git / github : pour heberger notre code
-
+*etherpad : pour cree un pad en ligne et le partager.
 
 # installations 
 
@@ -40,28 +40,51 @@ ce projet à ete developper à l'aide de :
 
 projet > run As  >  maven Build .. > Goals
 
-tomcat7: run -Dmaven.tomcat.port=8081
+tomcat7:run -Dmaven.tomcat.port=8081
 
 ## lancer server base de donnees :
+
+### windows
 
 * double click sur run-hsqldb-server.bat
 
 * double click sur show-hsqldb.bat
 
-puis mettez cette configuration :
+### linux 
 
+* executer run-hsqldb-server.sh 
+
+* executer show-hsqldb.sh
+
+
+puis mettez cette configuration :
 
 type : HSQL Database Engine Server
 
 URL  : jdbc:hsqldb:hsql://localhost:9004/
 
-# server de pad 
-https://github.com/ether/etherpad-lite
+## server de pad 
+
+### windows
+
+* telecharger ce dossier  https://etherpad.org/#download
+* extraire 
+* executer le fichier start.bat
+
+copier le token pour acceder au server de pad dans config/ApiPadKey.txt ,
+depuis le fichier ApiKey qui se trouve dans le dossier du  server.
+
+### les autres systeme d'exploitation 
+
+voir https://github.com/ether/etherpad-lite
+
 
 #configuration 
 
 remplir fichier config/mailConfig.txt
-avec un compte mail et le mot de passe
+avec votre  compte mail et le mot de passe
+
+
 # Authors 
 
 Abdrahmane EL MAHJOUB
