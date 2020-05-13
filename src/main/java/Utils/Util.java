@@ -68,9 +68,12 @@ public class Util {
                     InternetAddress.parse(recepteur.toString())
             );
             message.setSubject("Testing Gmail for my defense");
-            message.setText("Dear student,"
-                    + "\n\n This is a simple test ! \n\n"
-                    +"<b>"+ msg +"</b>");
+            String texte = "Dear student, <br/>"+ 
+                    		"<b>"+ msg +"</b>";
+            message.setContent(texte, "text/html");
+//            message.setText("Dear student,"
+//                    + "\n\n This is a simple test ! \n\n"
+//                    +"<b>"+ msg +"</b>");
 
             Transport.send(message);
 
@@ -200,15 +203,16 @@ public class Util {
 					
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		System.err.println(getMail());
 		System.err.println(getPassword());
 		
+		
 		deleteAllPad();
 		
 		createPad("test", "hi", "hi2");
-		//To access on pad : http://localhost:9001/p/sondage
+		//To access on pad : http://localhost:9001/p/test
 	}
 
 }
