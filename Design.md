@@ -11,7 +11,7 @@
 # diagramme de sequence
 
 ## ajout d'un sondage 
-![ajouter sondage](images/addSondage.png "addSondage")
+![ajouter sondage](images/addsondage.png "addSondage")
 
 ## participer a un  sondage 
 ![participer sondage](images/participer.png "participer")
