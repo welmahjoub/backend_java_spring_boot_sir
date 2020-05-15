@@ -15,7 +15,8 @@ voir [doc](doc "documentation").
 
 # Api 
 
-voir https://documenter.getpostman.com/view/4248959/SzmZd1V2
+voir https://documenter.getpostman.com/view/4248959/Szmk1aov
+
 
 ![api](images/api.PNG "api")
 
