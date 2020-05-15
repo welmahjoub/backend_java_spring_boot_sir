@@ -2,6 +2,7 @@ package Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -49,23 +50,10 @@ public class ApiPadUtil {
 			
 			//Create Pad
 			client.createPad(idSondage, intutile+" " +resume);
-
-			/*
-			 * // Get pad text String text =
-			 * client.getText(idSondage).get("text").toString();
-			 * 
-			 * System.out.println("Text du pad: \n"+ text);
-			 * 
-			 * // Get list of all pad ids existing Map result = client.listAllPads(); List
-			 * padIds = (List) result.get("padIDs");
-			 * 
-			 * System.out.println("Les pads existants"); for (Object id : padIds) {
-			 * System.out.println(id); }
-			 */
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-		//System.err.println("insatller le server de pad sur port 9001");
+			
+		     System.err.println("insatller le server de pad sur port 9001");
 		}
 		
 		
@@ -74,17 +62,28 @@ public class ApiPadUtil {
 	
 	public static void deletePad(String idPad) {
 		
-		//DeletePad
-		client.deletePad(idPad);
+		
+		try {
+
+			client.deletePad(idPad);
+			
+		} catch (Exception e) {
+			System.err.println("erreur sup pad");
+		}
 	}
 	
 	public static void deleteAllPad() {
 
 		
-		//DeleteAllPad
-		for (Object id : getListPad()) {
-			client.deletePad(id.toString());
+		try {
+			
+			for (Object id : getListPad()) {
+				client.deletePad(id.toString());
+			}
+		} catch (Exception e) {
+			System.err.println("erreru sup all pad");
 		}
+		
 		
 	}
 	
@@ -92,16 +91,24 @@ public class ApiPadUtil {
 	
 	public static List getListPad() {
 
-		// Get list of all pad ids existing
-		Map result = client.listAllPads();
-		List padIds = (List) result.get("padIDs");
-		return padIds;
+		try {
+			
+			// Get list of all pad ids existing
+			Map result = client.listAllPads();
+			List padIds = (List) result.get("padIDs");
+			return padIds;
+			
+		} catch (Exception e) {
+			
+			return new ArrayList();
+		}
+		
 					
 	}
 	
 	public static void main(String[] args) {
 		
-		createPad("1", "hi", "by");
+		//createPad("1", "hi", "by");
 	}
 	
 }
