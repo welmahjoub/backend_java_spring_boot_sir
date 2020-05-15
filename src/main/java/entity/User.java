@@ -42,7 +42,17 @@ public class User {
 	
 	}
 	
-    @PrePersist
+    public User(long id, String nom, String prenom, String mail, String password, List<Sondage> sondages) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.password = password;
+		this.sondages = sondages;
+	}
+
+	@PrePersist
     private void prePersistFunction(){
 
       this.setPassword(ChiffrementUtil.chiffrer(this.password));

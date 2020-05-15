@@ -1,5 +1,6 @@
 package Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -45,13 +46,19 @@ public class UserRepository {
 		
 		Query q=manager.createQuery("select a from User as a",User.class);
 		
-		List<User> liste=q.getResultList();
+		
+		List<User> list=q.getResultList();
+		
+		List<User> liste=new ArrayList<User>();
 		
 		// dechifrement 
-		for (User user : liste) {
+		for (User user :list) {
 			
-			user.setPassword(ChiffrementUtil.dechiffrer(user.getPassword()));
+			String newPass=ChiffrementUtil.dechiffrer(user.getPassword());
 		    
+			User s=new User(user.getId(), user.getNom(), user.getPrenom()
+					, user.getMail(), newPass, user.getSondages());
+			liste.add(s);		
 		}
 		
 		return liste;
