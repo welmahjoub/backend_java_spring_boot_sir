@@ -65,7 +65,7 @@ public class SondageWebService {
 
 		SondageRepository.persistSondage(sondage);
 		
-		sondage.getReunion().setLienPad("localhost:9001/"+sondage.getId());
+		sondage.getReunion().setLienPad("localhost:9001/p/"+sondage.getId());
 		sondage.setLien("participe/"+sondage.getId());
 	
 		
