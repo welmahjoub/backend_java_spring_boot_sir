@@ -51,7 +51,7 @@ public class SondageWebService {
 		
 		Reunion reunion=new Reunion(data.getIntitule(), data.getResume()) ;
 		
-		System.err.println(user.getId());
+		
 		
 		Sondage sondage=new Sondage(proposition, user, reunion);
 		
