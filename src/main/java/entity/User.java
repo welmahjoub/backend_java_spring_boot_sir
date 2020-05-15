@@ -11,7 +11,7 @@ import javax.persistence.PrePersist;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
 
-import Utils.ChiffrementUtil;
+import Utils.CryptageUtil;
 
 @Entity
 public class User {
@@ -55,7 +55,7 @@ public class User {
 	@PrePersist
     private void prePersistFunction(){
 
-      this.setPassword(ChiffrementUtil.chiffrer(this.password));
+      this.setPassword(CryptageUtil.encrypt(this.password));
     }
 	
 

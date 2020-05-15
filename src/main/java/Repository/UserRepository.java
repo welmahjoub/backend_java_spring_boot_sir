@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import Utils.ChiffrementUtil;
+import Utils.CryptageUtil;
 import entity.User;
 import jpa.EntityManagerHelper;
 
@@ -55,7 +55,7 @@ public class UserRepository {
 		// cloner les users avant de les modifier
 		for (User user :list) {
 			
-			String newPass=ChiffrementUtil.dechiffrer(user.getPassword());
+			String newPass=CryptageUtil.decrypt(user.getPassword());
 		    
 			User s=new User(user.getId(), user.getNom(), user.getPrenom()
 					, user.getMail(), newPass, user.getSondages());
