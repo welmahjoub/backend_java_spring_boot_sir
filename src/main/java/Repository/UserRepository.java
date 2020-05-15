@@ -52,6 +52,7 @@ public class UserRepository {
 		List<User> liste=new ArrayList<User>();
 		
 		// dechifrement 
+		// cloner les users avant de les modifier
 		for (User user :list) {
 			
 			String newPass=ChiffrementUtil.dechiffrer(user.getPassword());

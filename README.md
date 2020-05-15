@@ -19,7 +19,7 @@ voir https://documenter.getpostman.com/view/4248959/SzmZd1V2
 
 ![api](images/api.PNG "api")
 
-# logiciels :
+# technologies :
 
 ce projet à ete developper à l'aide de :
 
@@ -79,13 +79,13 @@ depuis le fichier ApiKey qui se trouve dans le dossier du  server.
 voir https://github.com/ether/etherpad-lite
 
 
-#configuration 
+# configuration 
 
 remplir fichier config/mailConfig.txt
 avec votre  compte mail et le mot de passe
 
 
-# Authors 
+# Auteurs 
 
 Abdrahmane EL MAHJOUB
 
