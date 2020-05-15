@@ -17,7 +17,8 @@ import javax.ws.rs.core.MediaType;
 import Repository.SondageRepository;
 import Repository.UserRepository;
 import Utils.ApiPadUtil;
-import Utils.Util;
+import Utils.DateUtil;
+import Utils.sendMailUtil;
 import dto.ParticipantDto;
 import dto.SondageDto;
 import entity.Participant;
@@ -58,7 +59,7 @@ public class SondageWebService {
 		
 		for (String date : data.getDates()) {
 			 
-			Date d=Util.convertirDate(date);
+			Date d=DateUtil.convertirDate(date);
 			Proposition dr=new Proposition(sondage, d);
 			proposition.add(dr);
 		}
@@ -96,7 +97,7 @@ public class SondageWebService {
 			
 			for (String date : data.getDates()) {
 				 
-				Date d=Util.convertirDate(date);
+				Date d=DateUtil.convertirDate(date);
 				Proposition dr=new Proposition(sondage, d);
 				
 				sondage.getDateProposees().add(dr);			}
@@ -178,6 +179,7 @@ public class SondageWebService {
 		Proposition proposition = SondageRepository.findPropositionById(idProposition);
 		
 		corpsMsg.append(proposition.getDate())	;
+		corpsMsg.append(" lien pad :"+proposition.getSondage().getReunion().getLienPad());
 		
 		if( proposition != null) {
 			
@@ -204,7 +206,7 @@ public class SondageWebService {
 			}
 			
 			
-			Util.sendMail(corpsMsg, addresses);
+			sendMailUtil.sendMail(corpsMsg, addresses);
 			
 			return true;
 		}

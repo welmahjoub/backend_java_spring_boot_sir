@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
+
+import Utils.ChiffrementUtil;
 
 @Entity
 public class User {
@@ -38,6 +41,13 @@ public class User {
 		sondages=new ArrayList<Sondage>();
 	
 	}
+	
+    @PrePersist
+    private void prePersistFunction(){
+
+      this.setPassword(ChiffrementUtil.chiffrer(this.password));
+    }
+	
 
 	public long getId() {
 		return id;

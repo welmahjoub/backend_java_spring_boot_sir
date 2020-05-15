@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import entity.Participant;
+import Utils.ChiffrementUtil;
 import entity.User;
 import jpa.EntityManagerHelper;
 
@@ -45,7 +45,16 @@ public class UserRepository {
 		
 		Query q=manager.createQuery("select a from User as a",User.class);
 		
-		return q.getResultList();
+		List<User> liste=q.getResultList();
+		
+		// dechifrement 
+		for (User user : liste) {
+			
+			user.setPassword(ChiffrementUtil.dechiffrer(user.getPassword()));
+		    
+		}
+		
+		return liste;
 	}
 	
 	public static User addUser(User user)

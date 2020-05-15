@@ -2,10 +2,6 @@ package Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -16,24 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class Util {
-	
-	public static Date convertirDate(String date)
-	{
-		Date date1=null;
-		try {
-			 date1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(date);
-		} catch (ParseException e) {
-			
-			date1=new Date();
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTimeInMillis(Long.valueOf(date));
-			
-			date1=calendar.getTime();
-		}
-		
-		return date1;
-	}
+public class sendMailUtil {
 	
 	public static boolean sendMail(StringBuilder msg, StringBuilder recepteur) {
 		
@@ -66,9 +45,6 @@ public class Util {
             String texte = "Dear student, <br/>"+ 
                     		"<b>"+ msg +"</b>";
             message.setContent(texte, "text/html");
-//            message.setText("Dear student,"
-//                    + "\n\n This is a simple test ! \n\n"
-//                    +"<b>"+ msg +"</b>");
 
             Transport.send(message);
 
@@ -118,6 +94,4 @@ public class Util {
 	      
 		return data;
 	}
-	
-
 }

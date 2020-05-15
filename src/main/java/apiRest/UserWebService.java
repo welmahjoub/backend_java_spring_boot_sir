@@ -11,7 +11,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import Repository.ParticipantRepository;
 import Repository.UserRepository;
 import dto.UserDto;
 import entity.User;
