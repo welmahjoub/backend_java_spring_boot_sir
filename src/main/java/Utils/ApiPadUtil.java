@@ -63,6 +63,24 @@ public class ApiPadUtil {
 		
 	}
 	
+	// Get pad text
+				
+				
+	public static String getTextPad(String idPad) {
+		
+		
+		try {
+
+			String text = client.getText(idPad).get("text").toString();
+			return text;
+			
+		} catch (Exception e) {
+			System.err.println("erreur suppression pad");
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	public static void deletePad(String idPad) {
 		
 		
@@ -85,7 +103,8 @@ public class ApiPadUtil {
 				client.deletePad(id.toString());
 			}
 		} catch (Exception e) {
-			System.err.println("erreru sup all pad");
+			System.err.println("erreur suppression allpad");
+			e.printStackTrace();
 		}
 		
 		

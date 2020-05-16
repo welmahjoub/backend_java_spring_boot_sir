@@ -14,9 +14,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.mysql.fabric.xmlrpc.base.Value;
+
 import Repository.SondageRepository;
 import Repository.UserRepository;
 import Utils.ApiPadUtil;
+import Utils.CryptageUtil;
 import Utils.DateUtil;
 import Utils.sendMailUtil;
 import dto.ParticipantDto;
@@ -49,7 +52,7 @@ public class SondageWebService {
 		User user=UserRepository.findById(data.getIdUser());
 		List<Proposition> proposition=new ArrayList<Proposition>();
 		
-		Reunion reunion=new Reunion(data.getIntitule(), data.getResume()) ;
+		Reunion reunion=new Reunion(data.getIntitule(), data.getResume(),CryptageUtil.encrypt("codeReunion")) ;
 		
 		
 		
@@ -177,25 +180,31 @@ public class SondageWebService {
 	 @Produces(MediaType.APPLICATION_JSON)
 	 public boolean validerDate(@PathParam("id") String idProposition) {
 		 
-		 StringBuilder corpsMsg = new StringBuilder("La date final de la reunion est fixée au ");
+		 StringBuilder corpsMsg = new StringBuilder("La date final de la reunion est fixée au : ");
+		 StringBuilder objet = new StringBuilder("");
+		 
 		 StringBuilder addresses = new StringBuilder("");
 		Proposition proposition = SondageRepository.findPropositionById(idProposition);
 		
-		corpsMsg.append(proposition.getDate())	;
-		corpsMsg.append(" lien pad :"+proposition.getSondage().getReunion().getLienPad());
 		
 		if( proposition != null) {
+			
+			// Preparation du message à envoyer
+			objet.append(proposition.getSondage().getReunion().getIntitule());
+			corpsMsg.append( "<b>" +proposition.getDate() +"</b>" +"<br/> <br/>")	;
+			corpsMsg.append(" lien pad pour écrire vos résumés: "+ "<b>"+ proposition.getSondage().getReunion().getLienPad() +"</b>");
 			
 			Sondage sond =proposition.getSondage();
 			
 			sond.setDatereunion(proposition.getDate());
 			sond.setClos(true);
-			
+			sond.getReunion().setResume(ApiPadUtil.getTextPad(String.valueOf(sond.getId())));;
 			SondageRepository.persistSondage(sond);
 			
 
 			 int i = 0;
 			 
+			 //Recuperation et prepartion des addresses mails de tous les participants 
 			for( Participant participant: proposition.getUsers()) {
 				
 				addresses.append(participant.getMail());
@@ -208,8 +217,8 @@ public class SondageWebService {
 				}
 			}
 			
-			
-			sendMailUtil.sendMail(corpsMsg, addresses);
+			//envoie du mail
+			sendMailUtil.sendMail(objet,corpsMsg, addresses);
 			
 			return true;
 		}

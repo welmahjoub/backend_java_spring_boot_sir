@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class sendMailUtil {
 	
-	public static boolean sendMail(StringBuilder msg, StringBuilder recepteur) {
+	public static boolean sendMail(StringBuilder objet,StringBuilder msg, StringBuilder recepteur) {
 		
 		final String username = getMail();
         final String password = getPassword();
@@ -41,9 +41,9 @@ public class sendMailUtil {
                     Message.RecipientType.TO,
                     InternetAddress.parse(recepteur.toString())
             );
-            message.setSubject("Testing Gmail for my defense");
-            String texte = "Dear student, <br/>"+ 
-                    		"<b>"+ msg +"</b>";
+            message.setSubject("Confirmation de la date reunion" + objet);
+            String texte = "Cher  Participant, <br/> <br/>"+ 
+                    		""+ msg +"<br/>";
             message.setContent(texte, "text/html");
 
             Transport.send(message);

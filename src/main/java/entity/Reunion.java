@@ -28,6 +28,14 @@ public class Reunion {
 		this.resume = resume;
 		
 	}
+	
+	public Reunion(String intitule, String resume, String code) {
+		super();
+		this.intitule = intitule;
+		this.resume = resume;
+		this.code = code;
+		
+	}
 
 	public Reunion() {
 		// TODO Auto-generated constructor stub
