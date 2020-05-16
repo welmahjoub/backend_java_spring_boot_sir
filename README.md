@@ -47,9 +47,9 @@ tomcat7:run -Dmaven.tomcat.port=8081
 
 ### windows
 
-* double click sur run-hsqldb-server.bat
+* double click sur run-hsqldb-server.bat : pardefaut tourne sur le port 9004
 
-* double click sur show-hsqldb.bat
+* double click sur show-hsqldb.bat : choisir engine server et mettre *:9004* juste après localhost pour lui specifier le port du server hsql
 
 ### linux 
 
@@ -75,6 +75,9 @@ URL  : jdbc:hsqldb:hsql://localhost:9004/
 copier le token pour acceder au server de pad dans config/ApiPadKey.txt ,
 depuis le fichier ApiKey qui se trouve dans le dossier du  server.
 
+*Plus de détail sur l'utilsation de pad avec java
+https://github.com/nilsfr/java-etherpad-lite
+
 ### les autres systeme d'exploitation 
 
 voir https://github.com/ether/etherpad-lite
@@ -82,12 +85,12 @@ voir https://github.com/ether/etherpad-lite
 
 # configuration 
 
-remplir fichier config/mailConfig.txt
-avec votre  compte mail et le mot de passe
+*remplir fichier config/mailConfig.txt
+avec votre  compte mail et le mot de passe, surtout si vous utilisez gmail de pas oubliez d'aller ![activer accès moins sécurisé des applications](images/gmail_secu.PNG"secu gmail") 
 
 
 # Auteurs 
 
-Abdrahmane EL MAHJOUB
+Abdrahmane EL MAHJOUB (welmahjoub sur github)
 
-Yaya SIMPARA
+Yaya SIMPARA (ysimp sur github)
