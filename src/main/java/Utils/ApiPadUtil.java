@@ -21,6 +21,7 @@ public class ApiPadUtil {
 			
 		} catch (Exception e) {
 			System.err.println("echec client pad ");
+			e.printStackTrace();
 		}
 	}
 	
@@ -37,6 +38,7 @@ public class ApiPadUtil {
 		      myReader.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("getTokenApiPad");
+			e.printStackTrace();
 		}
 	      
 	      
@@ -54,6 +56,7 @@ public class ApiPadUtil {
 		} catch (Exception e) {
 			
 		     System.err.println("insatller le server de pad sur port 9001");
+		     e.printStackTrace();
 		}
 		
 		
@@ -68,7 +71,8 @@ public class ApiPadUtil {
 			client.deletePad(idPad);
 			
 		} catch (Exception e) {
-			System.err.println("erreur sup pad");
+			System.err.println("erreur suppression pad");
+			e.printStackTrace();
 		}
 	}
 	

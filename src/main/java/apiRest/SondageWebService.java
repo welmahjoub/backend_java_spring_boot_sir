@@ -116,10 +116,13 @@ public class SondageWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean deleteSondage(@PathParam ("id") String idsondage) {
 		
-		 if(SondageRepository.deleteSondage(idsondage)!=null)
+		 if(SondageRepository.deleteSondage(idsondage)!=null) {
+			 ApiPadUtil.deletePad(idsondage);
 			 return true;
-		 else
+		 }
+		 else {
 			 return false;
+			 }
 	}
 	
 	@GET

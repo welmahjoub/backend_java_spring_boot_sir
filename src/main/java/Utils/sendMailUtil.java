@@ -54,6 +54,7 @@ public class sendMailUtil {
         catch (Exception e) {
         	
            System.err.println("echec envoie email ");
+           e.printStackTrace();
             return false;
         }
 	}
@@ -70,6 +71,7 @@ public class sendMailUtil {
 		      myReader.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("getmail");
+			e.printStackTrace();
 		}
 	      
 	      
@@ -89,6 +91,7 @@ public class sendMailUtil {
 		      myReader.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("getpassword");
+			e.printStackTrace();
 		}
 	      
 	      
