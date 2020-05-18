@@ -53,8 +53,8 @@ public class sendMailUtil {
         } 
         catch (Exception e) {
         	
-           System.err.println("echec envoie email ");
-           e.printStackTrace();
+           System.err.println("echec envoie email : une erreur est survenue lors de l'envoie du mail ");
+//           e.printStackTrace();
             return false;
         }
 	}
@@ -70,8 +70,9 @@ public class sendMailUtil {
 		      
 		      myReader.close();
 		} catch (FileNotFoundException e) {
-			System.err.println("getmail");
-			e.printStackTrace();
+			System.err.println("error getmail : erreur lors de la recuperation du login \n"
+					+ "Verifier le fichier mailconfig dans le dans le dossier config");
+//			e.printStackTrace();
 		}
 	      
 	      
@@ -90,8 +91,9 @@ public class sendMailUtil {
 		       
 		      myReader.close();
 		} catch (FileNotFoundException e) {
-			System.err.println("getpassword");
-			e.printStackTrace();
+			System.err.println("error getpassword : erreur lors de la recuperation du mot de passe \n"
+					+ "Verifier le fichier mailconfig dans le dans le dossier config");
+			//			e.printStackTrace();
 		}
 	      
 	      

@@ -20,8 +20,8 @@ public class ApiPadUtil {
 		 client = new EPLiteClient("http://localhost:9001", getTokenApiPad());
 			
 		} catch (Exception e) {
-			System.err.println("echec client pad ");
-			e.printStackTrace();
+			System.err.println("echec initialisation du client pad");
+//			e.printStackTrace();
 		}
 	}
 	
@@ -37,8 +37,9 @@ public class ApiPadUtil {
 		       
 		      myReader.close();
 		} catch (FileNotFoundException e) {
-			System.err.println("getTokenApiPad");
-			e.printStackTrace();
+			System.err.println("error getTokenApiPad : erreur lors de la recuperation de la clé du server \n"
+					+ "Verifier bien le fichier ApiPadKey dans config et que vous avez bien copier et mis le token");
+//			e.printStackTrace();
 		}
 	      
 	      
@@ -55,7 +56,8 @@ public class ApiPadUtil {
 			
 		} catch (Exception e) {
 			
-		     System.err.println("insatller le server de pad sur port 9001");
+		     System.err.println(" error createPad : erreur lors de la creation du pad \n"
+		     		+ " Verifier que le server du pad  est bien insatllé sur port 9001");
 		     e.printStackTrace();
 		}
 		
@@ -75,7 +77,7 @@ public class ApiPadUtil {
 			return text;
 			
 		} catch (Exception e) {
-			System.err.println("erreur suppression pad");
+			System.err.println(" error getTextPad : erreur lors de la recuperation du resume du pad");
 			e.printStackTrace();
 		}
 		return "";
@@ -89,7 +91,7 @@ public class ApiPadUtil {
 			client.deletePad(idPad);
 			
 		} catch (Exception e) {
-			System.err.println("erreur suppression pad");
+			System.err.println("error deletePad : erreur lors de la  suppression du pad");
 			e.printStackTrace();
 		}
 	}
@@ -103,8 +105,8 @@ public class ApiPadUtil {
 				client.deletePad(id.toString());
 			}
 		} catch (Exception e) {
-			System.err.println("erreur suppression allpad");
-			e.printStackTrace();
+			System.err.println("error deleteAllPad : erreur lors de la  suppression de tous les pads");
+//			e.printStackTrace();
 		}
 		
 		
@@ -122,15 +124,26 @@ public class ApiPadUtil {
 			return padIds;
 			
 		} catch (Exception e) {
-			
+			System.err.println("Error getListPad : erreur lors de la recuperation de la liste des pads");
+//			e.printStackTrace();
 			return new ArrayList();
-		}
-		
+		}	
 					
+	}
+	
+	public static void afficheListPad() {
+		
+		for (Object padId : getListPad() ) {
+			System.out.println(padId);
+			client.deletePad(String.valueOf(padId));
+		}
 	}
 	
 	public static void main(String[] args) {
 		
+//		deletePad("2");
+//		deleteAllPad();
+		afficheListPad();
 		//createPad("1", "hi", "by");
 	}
 	

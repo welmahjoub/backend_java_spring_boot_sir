@@ -85,8 +85,8 @@ voir https://github.com/ether/etherpad-lite
 
 # configuration 
 
-*remplir fichier config/mailConfig.txt
-avec votre  compte mail et le mot de passe, surtout si vous utilisez gmail de pas oubliez d'aller ![activer accès moins sécurisé des applications](images/gmail_secu.PNG"secu gmail") 
+* remplir fichier config/mailConfig.txt
+avec votre  compte mail et le mot de passe, surtout si vous utilisez gmail de pas oubliez d'aller ![activer accès moins sécurisé des applications](images/gmail_secu.PNG "secu gmail") 
 
 
 # Auteurs 
